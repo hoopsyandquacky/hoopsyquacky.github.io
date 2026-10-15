@@ -25,6 +25,9 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
@@ -34,11 +37,44 @@
             border-radius: 16px;
             padding: 2.5rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            flex: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lang-switch {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: #eee;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         h1 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-size: 2rem;
         }
 
@@ -46,7 +82,7 @@
             color: var(--secondary-color);
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         p, ul {
@@ -60,12 +96,12 @@
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .back-btn {
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: bold;
@@ -81,6 +117,14 @@
             font-size: 0.85rem;
             color: #888;
         }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -88,38 +132,197 @@
     <div class="container">
         <a href="index.html" class="back-btn">← Torna alla Home / Back to Home</a>
         
-        <h1>Privacy Policy</h1>
-        <p><em>Ultimo aggiornamento: Ottobre 2026 / Last updated: October 2026</em></p>
+        <header>
+            <h1>Privacy Policy</h1>
+            <p>Hoopsy & Quacky Companion Hub</p>
+            
+            <!-- Language Selector -->
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('it')">IT</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('de')">DE</button>
+                <button class="lang-btn" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" onclick="setLang('es')">ES</button>
+                <button class="lang-btn" onclick="setLang('sv')">SV</button>
+            </div>
+        </header>
 
-        <h2>1. Titolare del Trattamento / Data Controller</h2>
-        <p>Il titolare del trattamento dei dati è il brand <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+        <!-- ITALIAN -->
+        <div id="content-it" class="lang-content active">
+            <h2>1. Titolare del Trattamento</h2>
+            <p>Il titolare del trattamento dei dati è il brand <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
 
-        <h2>2. Dati Raccolti e Finalità / Collected Data & Purpose</h2>
-        <p>Raccogliamo esclusivamente l'indirizzo email fornito volontariamente dagli utenti al momento dell'iscrizione alla newsletter. I dati vengono utilizzati unicamente per:</p>
-        <ul>
-            <li>Inviare aggiornamenti sulle nuove uscite editoriali e libri della serie Hoopsy & Quacky.</li>
-            <li>Fornire materiale gratuito aggiuntivo (disegni da colorare, poster, risorse stampabili).</li>
-            <li>Comunicare promozioni o novità relative al brand.</li>
-        </ul>
+            <h2>2. Dati Raccolti e Finalità</h2>
+            <p>Raccogliamo esclusivamente l'indirizzo email fornito volontariamente dagli utenti al momento dell'iscrizione alla newsletter. I dati vengono utilizzati unicamente per:</p>
+            <ul>
+                <li>Inviare aggiornamenti sulle nuove uscite editoriali e libri della serie.</li>
+                <li>Fornire materiale gratuito aggiuntivo (disegni da colorare, poster, risorse stampabili).</li>
+                <li>Comunicare novità o iniziative relative al brand.</li>
+            </ul>
 
-        <h2>3. Base Giuridica e Consenso / Legal Basis</h2>
-        <p>La base giuridica del trattamento è il consenso esplicito fornito dall'utente tramite la spunta della casella nel modulo di iscrizione (art. 6, par. 1, lett. a del GDPR).</p>
+            <h2>3. Base Giuridica</h2>
+            <p>La base giuridica del trattamento è il consenso esplicito fornito dall'utente tramite la spunta della casella nel modulo di iscrizione (art. 6, par. 1, lett. a del GDPR).</p>
 
-        <h2>4. Conservazione e Servizi Terzi / Storage & Third Parties</h2>
-        <p>I dati (indirizzo email, data/ora di iscrizione e indirizzo IP) sono conservati in modo sicuro tramite la piattaforma di email marketing utilizzata per l'invio delle comunicazioni. I dati non saranno mai venduti, ceduti o condivisi con terze parti per scopi commerciali.</p>
+            <h2>4. Conservazione e Servizi Terzi</h2>
+            <p>I dati (indirizzo email, data/ora di iscrizione e indirizzo IP) sono conservati in modo sicuro tramite la piattaforma di email marketing utilizzata per l'invio delle comunicazioni. I dati non saranno mai venduti o ceduti a terze parti.</p>
 
-        <h2>5. I tuoi Diritti e Cancellazione / Your Rights & Unsubscribe</h2>
-        <p>In conformità al GDPR, hai il diritto di:</p>
-        <ul>
-            <li>Richiedere l'accesso, la rettifica o la cancellazione dei tuoi dati in qualsiasi momento.</li>
-            <li>Cancellarti autonomamente dalla newsletter cliccando sul link di disiscrizione (<em>Unsubscribe</em>) presente in fondo a ogni email inviata.</li>
-            <li>Contattarci direttamente all'indirizzo <a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a> per qualsiasi richiesta relativa ai tuoi dati.</li>
-        </ul>
+            <h2>5. I tuoi Diritti e Cancellazione</h2>
+            <p>In conformità al GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica o la cancellazione. Puoi disiscriverti in qualsiasi momento cliccando sul link di cancellazione (<em>Unsubscribe</em>) presente in fondo a ogni email ricevuta o scrivendoci direttamente.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="content-en" class="lang-content">
+            <h2>1. Data Controller</h2>
+            <p>The data controller is the brand <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Collected Data & Purpose</h2>
+            <p>We exclusively collect the email address voluntarily provided by users when subscribing to the newsletter. The data is used solely to:</p>
+            <ul>
+                <li>Send updates on new book releases and series updates.</li>
+                <li>Provide additional free resources (coloring pages, posters, printables).</li>
+                <li>Communicate news regarding the brand.</li>
+            </ul>
+
+            <h2>3. Legal Basis</h2>
+            <p>The legal basis for processing is the explicit consent given by the user via the checkbox in the subscription form (Art. 6(1)(a) GDPR).</p>
+
+            <h2>4. Storage & Third Parties</h2>
+            <p>Data (email address, subscription timestamp, and IP address) is securely stored through the email marketing platform used for communications. Data is never sold or shared with third parties.</p>
+
+            <h2>5. Your Rights & Unsubscribe</h2>
+            <p>In compliance with GDPR, you have the right to access, correct, or delete your data. You can unsubscribe at any time by clicking the <em>Unsubscribe</em> link at the bottom of any email or by contacting us directly.</p>
+        </div>
+
+        <!-- GERMAN -->
+        <div id="content-de" class="lang-content">
+            <h2>1. Verantwortlicher</h2>
+            <p>Verantwortlicher für die Datenverarbeitung ist die Marke <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Erfasste Daten & Zweck</h2>
+            <p>Wir erfassen ausschließlich die E-Mail-Adresse, die Nutzer freiwillig bei der Anmeldung zum Newsletter angeben. Die Daten werden ausschließlich verwendet für:</p>
+            <ul>
+                <li>Das Senden von Updates zu neuen Buchveröffentlichungen.</li>
+                <li>Die Bereitstellung zusätzlicher kostenloser Materialien (Ausmalbilder, Poster).</li>
+                <li>Wichtige Neuigkeiten rund um die Marke.</li>
+            </ul>
+
+            <h2>3. Rechtsgrundlage</h2>
+            <p>Rechtsgrundlage für die Verarbeitung ist die ausdrückliche Einwilligung des Nutzers über das Kontrollkästchen im Anmeldeformular (Art. 6 Abs. 1 lit. a DSGVO).</p>
+
+            <h2>4. Speicherung & Drittanbieter</h2>
+            <p>Die Daten (E-Mail-Adresse, Zeitstempel und IP-Adresse) werden sicher über die für den Versand genutzte E-Mail-Marketing-Plattform gespeichert. Eine Weitergabe an Dritte findet nicht statt.</p>
+
+            <h2>5. Ihre Rechte & Abbestellung</h2>
+            <p>Gemäß DSGVO haben Sie das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten. Sie können sich jederzeit über den Abmeldelink (<em>Unsubscribe</em>) am Ende jeder E-Mail abmelden.</p>
+        </div>
+
+        <!-- FRENCH -->
+        <div id="content-fr" class="lang-content">
+            <h2>1. Responsable du traitement</h2>
+            <p>Le responsable du traitement des données est la marque <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Données collectées et finalités</h2>
+            <p>Nous collectons exclusivement l'adresse e-mail fournie volontairement lors de l'inscription à la newsletter. Ces données sont utilisées uniquement pour :</p>
+            <ul>
+                <li>Envoyer des actualités sur les nouvelles parutions de livres.</li>
+                <li>Fournir du matériel gratuit supplémentaire (coloriages, affiches).</li>
+                <li>Communiquer les nouveautés concernant la marque.</li>
+            </ul>
+
+            <h2>3. Base juridique</h2>
+            <p>La base juridique du traitement est le consentement explicite donné par l'utilisateur via la case à cocher du formulaire d'inscription (Art. 6(1)(a) RGPD).</p>
+
+            <h2>4. Conservation et tiers</h2>
+            <p>Les données (e-mail, date/heure d'inscription et adresse IP) sont stockées en toute sécurité via la plateforme d'e-mailing. Vos données ne seront jamais vendues à des tiers.</p>
+
+            <h2>5. Vos droits et désabonnement</h2>
+            <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Vous pouvez vous désabonner à tout moment via le lien figurant au bas de chaque e-mail.</p>
+        </div>
+
+        <!-- SPANISH -->
+        <div id="content-es" class="lang-content">
+            <h2>1. Responsable del Tratamiento</h2>
+            <p>El responsable del tratamiento de datos es la marca <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Datos Recopilados y Finalidad</h2>
+            <p>Recopilamos exclusivamente la dirección de correo electrónico proporcionada voluntariamente al suscribirse al boletín. Los datos se utilizan únicamente para:</p>
+            <ul>
+                <li>Enviar actualizaciones sobre nuevos lanzamientos de libros.</li>
+                <li>Proporcionar recursos gratuitos adicionales (dibujos, pósters).</li>
+                <li>Comunicar novedades de la marca.</li>
+            </ul>
+
+            <h2>3. Base Jurídica</h2>
+            <p>La base jurídica es el consentimiento explícito otorgado por el usuario mediante la casilla de verificación en el formulario de suscripción (Art. 6.1.a RGPD).</p>
+
+            <h2>4. Almacenamiento y Terceros</h2>
+            <p>Los datos (correo, fecha/hora e IP) se almacenan de forma segura a través de la plataforma de marketing por correo electrónico. Los datos nunca se venden a terceros.</p>
+
+            <h2>5. Tus Derechos y Cancelación</h2>
+            <p>De conformidad con el RGPD, tienes derecho a acceder, rectificar o suprimir tus datos. Puedes darte de baja en cualquier momento haciendo clic en el enlace de cancelación en cualquier correo.</p>
+        </div>
+
+        <!-- SWEDISH -->
+        <div id="content-sv" class="lang-content">
+            <h2>1. Personuppgiftsansvarig</h2>
+            <p>Personuppgiftsansvarig är varumärket <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Insamlade uppgifter & Syfte</h2>
+            <p>Vi samlar enbart in den e-postadress som lämnas frivilligt vid prenumeration på nyhetsbrevet. Uppgifterna används endast för att:</p>
+            <ul>
+                <li>Skicka uppdateringar om nya boksläpp och seriens äventyr.</li>
+                <li>Tillhandahålla extra gratismaterial (målarbilder, poster).</li>
+                <li>Kommunicera nyheter kring varumärket.</li>
+            </ul>
+
+            <h2>3. Rättslig grund</h2>
+            <p>Den rättsliga grunden för behandlingen är det uttryckliga samtycke som ges via kryssrutan i prenumerationsformuläret (art. 6.1 a EU:s dataskyddsförordning GDPR).</p>
+
+            <h2>4. Lagring & Tredje part</h2>
+            <p>Uppgifterna (e-postadress, tidpunkt och IP-adress) lagras säkert via den e-postplattform som används för utskick. Uppgifterna säljs eller delas aldrig med tredje part.</p>
+
+            <h2>5. Dina rättigheter & Avregistrering</h2>
+            <p>I enlighet med GDPR har du rätt att begära tillgång till, rättelse eller radering av dina uppgifter. Du kan när som helst avregistrera dig via avlänken längst ner i varje utskick.</p>
+        </div>
 
         <footer>
             © Hoopsy & Quacky Series — Privacy Policy
         </footer>
     </div>
 
+    <script>
+        // Sincronizza la lingua in base alla selezione o al browser
+        function setLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+
+            const targetContent = document.getElementById('content-' + lang);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            } else {
+                document.getElementById('content-en').classList.add('active');
+            }
+
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase() === lang.toLowerCase()) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Rileva la lingua del browser all'avvio
+        window.onload = function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['it', 'en', 'de', 'fr', 'es', 'sv'];
+            
+            if (supportedLangs.includes(langCode)) {
+                setLang(langCode);
+            } else {
+                setLang('en');
+            }
+        };
+    </script>
 </body>
 </html>
