@@ -164,6 +164,36 @@
             width: 100%;
         }
 
+        /* Stili per la Card Newsletter */
+        .newsletter-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f4fbfb 100%);
+            border: 2px dashed var(--secondary-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 1rem auto 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--secondary-color);
+        }
+
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -209,7 +239,9 @@
 <div class="card">
 <h2>🎨 Disegni e Copertine da Colorare</h2>
 <p>Scarica gratis le copertine in bianco e nero e stampa le avventure di Hoopsy &amp; Quacky!</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Mistero a Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Mistero a Hauntville</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -245,6 +277,14 @@
                         </button>
 </div></div>
 </div>
+<div class="card newsletter-card">
+<h2>📩 Resta in Contatto con Hoopsy &amp; Quacky!</h2>
+<p>Iscriviti alla newsletter ufficiale per ricevere disegni extra gratuiti, anteprime sui prossimi libri e novità sulle avventure in arrivo!</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Grazie per esserti iscritto!');">
+<input class="newsletter-input" placeholder="La tua email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Iscriviti Ora</button>
+</form>
+</div>
 </div>
 <!-- ENGLISH CONTENT -->
 <div class="lang-content" id="content-en">
@@ -258,7 +298,9 @@
 <div class="card">
 <h2>🎨 Free Coloring Pages</h2>
 <p>Download free black &amp; white covers and print Hoopsy &amp; Quacky adventures!</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Mystery in Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Mystery in Hauntville</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -294,6 +336,14 @@
                         </button>
 </div></div>
 </div>
+<div class="card newsletter-card">
+<h2>📩 Stay in Touch with Hoopsy &amp; Quacky!</h2>
+<p>Subscribe to our official newsletter to get free bonus coloring pages, sneak peeks at upcoming books, and fun updates!</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+<input class="newsletter-input" placeholder="Your email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Subscribe Now</button>
+</form>
+</div>
 </div>
 <!-- GERMAN CONTENT -->
 <div class="lang-content" id="content-de">
@@ -307,7 +357,9 @@
 <div class="card">
 <h2>🎨 Gratis Ausmalbilder</h2>
 <p>Lade kostenlose Schwarz-Weiß-Cover herunter und drucke die Abenteuer aus!</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Die RATSEL von HAUNTVILLE" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Die RATSEL von HAUNTVILLE</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -335,13 +387,21 @@
                             📥 PDF Herunterladen (A4)
                         </button>
 </div><div class="freebie-item">
-<img alt="Die GROSSE Käsejagd" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
+<img alt="Die GROSSE KÄSEJAGD" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
 <span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>Die GROSSE Käsejagd</h3>
+<h3>Die GROSSE KÄSEJAGD</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
                             📥 PDF Herunterladen (A4)
                         </button>
 </div></div>
+</div>
+<div class="card newsletter-card">
+<h2>📩 Bleibe mit Hoopsy &amp; Quacky in Kontakt!</h2>
+<p>Abonniere unseren offiziellen Newsletter für kostenlose Extra-Ausmalbilder, Vorschauen auf neue Bücher und tolle Neuigkeiten!</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Vielen Dank für deine Anmeldung!');">
+<input class="newsletter-input" placeholder="Deine E-Mail-Adresse..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Jetzt Abonnieren</button>
+</form>
 </div>
 </div>
 <!-- FRENCH CONTENT -->
@@ -356,7 +416,9 @@
 <div class="card">
 <h2>🎨 Coloriages Gratuits</h2>
 <p>Téléchargez gratuitement les couvertures en noir et blanc à imprimer !</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Mystère à Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Mystère à Hauntville</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -392,6 +454,14 @@
                         </button>
 </div></div>
 </div>
+<div class="card newsletter-card">
+<h2>📩 Reste en Contact avec Hoopsy &amp; Quacky !</h2>
+<p>Inscris-toi à la newsletter officielle pour recevoir des coloriages bonus gratuits, des avant-premières et toutes les nouveautés !</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Merci pour votre inscription !');">
+<input class="newsletter-input" placeholder="Votre email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">S'inscrire</button>
+</form>
+</div>
 </div>
 <!-- SPANISH CONTENT -->
 <div class="lang-content" id="content-es">
@@ -405,7 +475,9 @@
 <div class="card">
 <h2>🎨 Dibujos para Colorear</h2>
 <p>¡Descarga gratis las portadas en blanco y negro para colorear!</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Misterio en Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Misterio en Hauntville</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -441,6 +513,14 @@
                         </button>
 </div></div>
 </div>
+<div class="card newsletter-card">
+<h2>📩 ¡Mantente en Contacto con Hoopsy &amp; Quacky!</h2>
+<p>¡Suscríbete al boletín oficial para recibir dibujos extra gratis, adelantos de los próximos libros y divertidas novedades!</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+<input class="newsletter-input" placeholder="Tu correo electrónico..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Suscribirse</button>
+</form>
+</div>
 </div>
 <!-- SWEDISH CONTENT -->
 <div class="lang-content" id="content-sv">
@@ -454,7 +534,9 @@
 <div class="card">
 <h2>🎨 Gratis Målarbilder</h2>
 <p>Ladda ner gratis svartvita omslag och skriv ut dina äventyr!</p>
-<div class="freebies-grid"><div class="freebie-item">
+<div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
+<div class="freebie-item">
 <img alt="Mysteriet i Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
 <h3>Mysteriet i Hauntville</h3>
 <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
@@ -489,6 +571,14 @@
                             📥 Ladda ner PDF (A4)
                         </button>
 </div></div>
+</div>
+<div class="card newsletter-card">
+<h2>📩 Håll Kontakten med Hoopsy &amp; Quacky!</h2>
+<p>Prenumerera på vårt officiella nyhetsbrev för att få gratis extra målarbilder, tjuvtittar på kommande böcker och roliga nyheter!</p>
+<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
+<input class="newsletter-input" placeholder="Din e-postadress..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Prenumerera Nu</button>
+</form>
 </div>
 </div>
 </main>
