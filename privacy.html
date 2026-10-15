@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Hoopsy &amp; Quacky - Official Companion App &amp; Extras</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Hoopsy & Quacky</title>
+    <style>
         :root {
             --primary-color: #FF6B6B;
             --secondary-color: #4ECDC4;
-            --accent-color: #FFE66D;
             --text-color: #2F2F2F;
             --bg-color: #F7F9FC;
             --card-bg: #FFFFFF;
@@ -26,34 +24,46 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            padding: 2rem 1rem;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            flex: 1;
+        }
+
         header {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
         }
 
         .lang-switch {
             margin-top: 1rem;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .lang-btn {
             background: #eee;
             border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 5px 12px;
+            border-radius: 15px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
         }
 
@@ -62,170 +72,50 @@
             color: white;
         }
 
-        main {
-            flex: 1;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            width: 100%;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
         h1 {
             color: var(--primary-color);
             margin-bottom: 0.5rem;
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
 
         h2 {
             color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background-color: #3db8b0;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: #ee5253;
-        }
-
-        /* Stili per la Galleria dei Freebies */
-        .freebies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
             margin-top: 1.5rem;
-            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
-        .freebie-item {
-            background: #fafbfc;
-            border: 1px solid #eaeaea;
-            border-radius: 12px;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .freebie-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+        p, ul {
             margin-bottom: 1rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
-
-        .freebie-item h3 {
             font-size: 1rem;
-            color: var(--text-color);
-            margin-bottom: 0.8rem;
+            color: #444;
         }
 
-        .btn-small {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.95rem;
-            width: 100%;
+        ul {
+            padding-left: 1.5rem;
         }
 
-        /* Stili per la Card Newsletter & GDPR */
-        .newsletter-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f4fbfb 100%);
-            border: 2px dashed var(--secondary-color);
+        li {
+            margin-bottom: 0.4rem;
         }
 
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            max-width: 500px;
-            margin: 1rem auto 0.5rem auto;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            min-width: 220px;
-            padding: 0.8rem 1.2rem;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .newsletter-input:focus {
-            border-color: var(--secondary-color);
-        }
-
-        .gdpr-container {
-            max-width: 500px;
-            margin: 0.5rem auto 0 auto;
-            text-align: left;
-            font-size: 0.85rem;
-            color: #555;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .gdpr-container input[type="checkbox"] {
-            margin-top: 3px;
-            cursor: pointer;
-        }
-
-        .gdpr-container label {
-            cursor: pointer;
-        }
-
-        .gdpr-container a {
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
             text-decoration: underline;
         }
 
         footer {
+            margin-top: 2rem;
             text-align: center;
-            padding: 1.5rem;
-            background-color: var(--card-bg);
-            font-size: 0.9rem;
-            color: #777;
-            border-top: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #888;
         }
 
         .lang-content {
@@ -238,441 +128,169 @@
     </style>
 </head>
 <body>
-<header>
-<h1>Hoopsy &amp; Quacky</h1>
-<p>Official Companion &amp; Collection Hub</p>
-<!-- Language Selector Buttons (Ordinati per importanza di mercato: EN, DE, IT, FR, ES, SV) -->
-<div class="lang-switch">
-<button class="lang-btn active" onclick="setLang('en')">EN</button>
-<button class="lang-btn" onclick="setLang('de')">DE</button>
-<button class="lang-btn" onclick="setLang('it')">IT</button>
-<button class="lang-btn" onclick="setLang('fr')">FR</button>
-<button class="lang-btn" onclick="setLang('es')">ES</button>
-<button class="lang-btn" onclick="setLang('sv')">SV</button>
-</div>
-</header>
-<main>
-<!-- ENGLISH CONTENT (DEFAULT) -->
-<div class="lang-content active" id="content-en">
-<div class="card">
-<h2>Collection Poster (A3 Format)</h2>
-<p>Download and print the official A3 Master Poster! Every time you finish a book in the series, cut out the special badge from the book and paste it onto your poster.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 Download A3 Poster
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Free Coloring Pages</h2>
-<p>Download free black &amp; white covers and print Hoopsy &amp; Quacky adventures!</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Mystery in Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Mystery in Hauntville</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 Download PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="The Christmas Delivery LAST-MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>The Christmas Delivery LAST-MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 Download PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="SUN SEA and SURPRISES" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>SUN SEA and SURPRISES</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 Download PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="GOAL and NEW FRIENDS!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>GOAL and NEW FRIENDS!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 Download PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="The GREAT CHEESE-CHASE" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>The GREAT CHEESE-CHASE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 Download PDF (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 Stay in Touch with Hoopsy &amp; Quacky!</h2>
-<p>Subscribe to our official newsletter to get free bonus coloring pages, sneak peeks at upcoming books, and fun updates!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-<input class="newsletter-input" name="email" placeholder="Your email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Subscribe Now</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-en" required="" type="checkbox"/>
-<label for="gdpr-en">I consent to the processing of personal data for newsletter updates. You can unsubscribe at any time via the link in every email. See our <a href="privacy.html" target="_blank">Privacy Policy</a>.</label>
-</div>
-</div>
-</div>
-<!-- GERMAN CONTENT -->
-<div class="lang-content" id="content-de">
-<div class="card">
-<h2>Sammel-Poster (A3)</h2>
-<p>Lade das offizielle A3-Sammelposter herunter und drucke es aus! Jedes Mal, wenn du ein Buch liest, schneide den Sticker-Badge aus und klebe ihn auf dein Poster.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 A3-Poster Herunterladen
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Gratis Ausmalbilder</h2>
-<p>Lade kostenlose Schwarz-Weiß-Cover herunter und drucke die Abenteuer aus!</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Die RATSEL von HAUNTVILLE" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Die RATSEL von HAUNTVILLE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 PDF Herunterladen (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="Die WEIHNACHTSLIEFERUNG LAST-MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>Die WEIHNACHTSLIEFERUNG LAST-MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 PDF Herunterladen (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="MEER STRAND und ÜBERRASCHUNGEN" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>MEER STRAND und ÜBERRASCHUNGEN</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 PDF Herunterladen (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="TOR und NEUE FREUNDE!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>TOR und NEUE FREUNDE!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 PDF Herunterladen (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="Die GROSSE KÄSEJAGD" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>Die GROSSE KÄSEJAGD</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 PDF Herunterladen (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 Bleibe mit Hoopsy &amp; Quacky in Kontakt!</h2>
-<p>Abonniere unseren offiziellen Newsletter für kostenlose Extra-Ausmalbilder, Vorschauen auf neue Bücher und tolle Neuigkeiten!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Vielen Dank für deine Anmeldung!');">
-<input class="newsletter-input" name="email" placeholder="Deine E-Mail-Adresse..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Jetzt Abonnieren</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-de" required="" type="checkbox"/>
-<label for="gdpr-de">Ich stimme der Verarbeitung personenbezogener Daten für den Newsletter zu. Du kannst dich jederzeit über den Link in jeder E-Mail abmelden. Siehe <a href="privacy.html" target="_blank">Datenschutz</a>.</label>
-</div>
-</div>
-</div>
-<!-- ITALIAN CONTENT -->
-<div class="lang-content" id="content-it">
-<div class="card">
-<h2>Il Poster della Collezione (A3)</h2>
-<p>Scarica e stampa il Poster A3 ufficiale! Ogni volta che completi un libro della serie, ritaglia lo sticker-badge speciale dal libro e incollalo sul tuo poster.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 Scarica il Poster A3
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Disegni e Copertine da Colorare</h2>
-<p>Scarica gratis le copertine in bianco e nero e stampa le avventure di Hoopsy &amp; Quacky!</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Mistero a Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Mistero a Hauntville</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 Scarica PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="CONSEGNA di NATALE LAST_MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>CONSEGNA di NATALE LAST_MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 Scarica PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="SOLE SPIAGGIA e SORPRESE" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>SOLE SPIAGGIA e SORPRESE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 Scarica PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="GOALS e NUOVI AMICI!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>GOALS e NUOVI AMICI!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 Scarica PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="La CORSA-RINCORSA del FORMAGGIO" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>La CORSA-RINCORSA del FORMAGGIO</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 Scarica PDF (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 Resta in Contatto con Hoopsy &amp; Quacky!</h2>
-<p>Iscriviti alla newsletter ufficiale per ricevere disegni extra gratuiti, anteprime sui prossimi libri e novità sulle avventure in arrivo!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Grazie per esserti iscritto!');">
-<input class="newsletter-input" name="email" placeholder="La tua email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Iscriviti Ora</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-it" required="" type="checkbox"/>
-<label for="gdpr-it">Acconsento al trattamento dei dati personali per l'invio della newsletter. Puoi cancellarti in qualsiasi momento tramite il link in fondo a ogni email. Consulta la <a href="privacy.html" target="_blank">Privacy Policy</a>.</label>
-</div>
-</div>
-</div>
-<!-- FRENCH CONTENT -->
-<div class="lang-content" id="content-fr">
-<div class="card">
-<h2>Affiche de Collection (A3)</h2>
-<p>Téléchargez et imprimez l'affiche officielle A3 ! À chaque livre terminé, découpez le badge dans votre livre et collez-le sur l'affiche.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 Télécharger l'Affiche A3
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Coloriages Gratuits</h2>
-<p>Téléchargez gratuitement les couvertures en noir et blanc à imprimer !</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Mystère à Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Mystère à Hauntville</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 Télécharger PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="La LIVRAISON DE NOËL LAST-MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>La LIVRAISON DE NOËL LAST-MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 Télécharger PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="MER PLAGE et SURPRISES" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>MER PLAGE et SURPRISES</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 Télécharger PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="BUT ET NOUVEAUX AMIS!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>BUT ET NOUVEAUX AMIS!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 Télécharger PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="La FOLLE COURSE au FROMAGE" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>La FOLLE COURSE au FROMAGE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 Télécharger PDF (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 Reste en Contact avec Hoopsy &amp; Quacky !</h2>
-<p>Inscris-toi à la newsletter officielle pour recevoir des coloriages bonus gratuits, des avant-premières et toutes les nouveautés !</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Merci pour votre inscription !');">
-<input class="newsletter-input" name="email" placeholder="Votre email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">S'inscrire</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-fr" required="" type="checkbox"/>
-<label for="gdpr-fr">J'accepte le traitement des données personnelles pour recevoir la newsletter. Vous pouvez vous désabonner à tout moment via le lien dans chaque e-mail. Voir la <a href="privacy.html" target="_blank">Politique de confidentialité</a>.</label>
-</div>
-</div>
-</div>
-<!-- SPANISH CONTENT -->
-<div class="lang-content" id="content-es">
-<div class="card">
-<h2>Póster de la Colección (A3)</h2>
-<p>¡Descarga e imprime el póster oficial A3! Cada vez que completes un libro de la serie, recorta la insignia especial y pégala en tu póster.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 Descargar Póster A3
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Dibujos para Colorear</h2>
-<p>¡Descarga gratis las portadas en blanco y negro para colorear!</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Misterio en Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Misterio en Hauntville</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 Descargar PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="La ENTREGA DE NAVIDAD LAST-MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>La ENTREGA DE NAVIDAD LAST-MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 Descargar PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="El MISTERIO de HAUNTVILLE" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>El MISTERIO de HAUNTVILLE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 Descargar PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="GOLES y NUEVOS AMIGOS!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>GOLES y NUEVOS AMIGOS!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 Descargar PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="La LOCA CARRERA del QUESO" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>La LOCA CARRERA del QUESO</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 Descargar PDF (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 ¡Mantente en Contacto con Hoopsy &amp; Quacky!</h2>
-<p>¡Suscríbete al boletín oficial para recibir dibujos extra gratis, adelantos de los próximos libros y divertidas novedades!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
-<input class="newsletter-input" name="email" placeholder="Tu correo electrónico..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Suscribirse</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-es" required="" type="checkbox"/>
-<label for="gdpr-es">Consiento el tratamiento de datos personales para recibir el boletín. Puedes darte de baja en cualquier momento mediante el enlace en cada correo. Ver <a href="privacy.html" target="_blank">Política de Privacidad</a>.</label>
-</div>
-</div>
-</div>
-<!-- SWEDISH CONTENT -->
-<div class="lang-content" id="content-sv">
-<div class="card">
-<h2>Samlarposter (A3)</h2>
-<p>Ladda ner och skriv ut den officiella A3-affischen! Varje gång du läst klart en bok, klipp ut märket ur boken och klistra in det på din poster.</p>
-<button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
-                    📥 Ladda ner A3-poster
-                </button>
-</div>
-<div class="card">
-<h2>🎨 Gratis Målarbilder</h2>
-<p>Ladda ner gratis svartvita omslag och skriv ut dina äventyr!</p>
-<div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSERIRÀ I LIBRI QUI -->
-<div class="freebie-item">
-<img alt="Mysteriet i Hauntville" onerror="this.src='FREE_COVERS/1adC_HALLOWEEN_BW.pdf';" src="FREE_COVERS/1adC_HALLOWEEN_BW.png"/>
-<h3>Mysteriet i Hauntville</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                            📥 Ladda ner PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="Den JULLEVERANSEN LAST-MINUTE" onerror="this.src='FREE_COVERS/1adC_CHRISTMAS_BW.pdf';" src="FREE_COVERS/1adC_CHRISTMAS_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>Den JULLEVERANSEN LAST-MINUTE</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                            📥 Ladda ner PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="HAV STRAND och OVERRASKNINGAR" onerror="this.src='FREE_COVERS/1adC_beach_BW.pdf';" src="FREE_COVERS/1adC_beach_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>HAV STRAND och OVERRASKNINGAR</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
-                            📥 Ladda ner PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="MÅL OCH NYA VÄNNER!" onerror="this.src='FREE_COVERS/1adC_FOOTBALL_BW.pdf';" src="FREE_COVERS/1adC_FOOTBALL_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>MÅL OCH NYA VÄNNER!</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
-                            📥 Ladda ner PDF (A4)
-                        </button>
-</div><div class="freebie-item">
-<img alt="OSTLOPPET och JAKTEN" onerror="this.src='FREE_COVERS/1adC_CHEESE_BW.pdf';" src="FREE_COVERS/1adC_CHEESE_BW.png"/>
-<span style="background: #ff6b6b; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: bold;">COMING SOON</span>
-<h3>OSTLOPPET och JAKTEN</h3>
-<button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
-                            📥 Ladda ner PDF (A4)
-                        </button>
-</div></div>
-</div>
-<div class="card newsletter-card">
-<h2>📩 Håll Kontakten med Hoopsy &amp; Quacky!</h2>
-<p>Prenumerera på vårt officiella nyhetsbrev för att få gratis extra målarbilder, tjuvtittar på kommande böcker och roliga nyheter!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
-<input class="newsletter-input" name="email" placeholder="Din e-postadress..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Prenumerera Nu</button>
-</form>
-<div class="gdpr-container">
-<input id="gdpr-sv" required="" type="checkbox"/>
-<label for="gdpr-sv">Jag samtycker till behandling av personuppgifter för nyhetsbrevet. Du kan när som helst avregistrera dig via länken i varje e-postmeddelande. Se <a href="privacy.html" target="_blank">Integritetspolicy</a>.</label>
-</div>
-</div>
-</div>
-</main>
-<footer>
-        © Hoopsy &amp; Quacky Series — All rights reserved.
-    </footer>
-<script>
-        // Universally handles direct file downloads
-        function downloadFile(fileUrl, fileName) {
-            fetch(fileUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.blob();
-                })
-                .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = blobUrl;
-                    a.download = fileName;
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(blobUrl);
-                    document.body.removeChild(a);
-                })
-                .catch(error => {
-                    window.location.href = fileUrl;
-                });
-        }
 
-        // Automatic Browser Language Detection (Defaults to EN)
-        function detectLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const langCode = userLang.substring(0, 2).toLowerCase();
-            const supportedLangs = ['en', 'de', 'it', 'fr', 'es', 'sv'];
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home / Torna alla Home</a>
+        
+        <header>
+            <h1>Privacy Policy</h1>
+            <p>Hoopsy & Quacky Companion Hub</p>
             
-            if (supportedLangs.includes(langCode)) {
-                setLang(langCode);
-            } else {
-                setLang('en');
-            }
-        }
+            <!-- Language Selector (Ordinati per importanza di mercato: EN, DE, IT, FR, ES, SV) -->
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('de')">DE</button>
+                <button class="lang-btn" onclick="setLang('it')">IT</button>
+                <button class="lang-btn" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" onclick="setLang('es')">ES</button>
+                <button class="lang-btn" onclick="setLang('sv')">SV</button>
+            </div>
+        </header>
 
+        <!-- ENGLISH (DEFAULT) -->
+        <div id="content-en" class="lang-content active">
+            <h2>1. Data Controller</h2>
+            <p>The data controller is the brand <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Collected Data & Purpose</h2>
+            <p>We exclusively collect the email address voluntarily provided by users when subscribing to the newsletter. The data is used solely to:</p>
+            <ul>
+                <li>Send updates on new book releases and series updates.</li>
+                <li>Provide additional free resources (coloring pages, posters, printables).</li>
+                <li>Communicate news regarding the brand.</li>
+            </ul>
+
+            <h2>3. Legal Basis</h2>
+            <p>The legal basis for processing is the explicit consent given by the user via the checkbox in the subscription form (Art. 6(1)(a) GDPR).</p>
+
+            <h2>4. Storage & Third Parties</h2>
+            <p>Data (email address, subscription timestamp, and IP address) is securely stored through the email marketing platform used for communications. Data is never sold or shared with third parties.</p>
+
+            <h2>5. Your Rights & Unsubscribe</h2>
+            <p>In compliance with GDPR, you have the right to access, correct, or delete your data. You can unsubscribe at any time by clicking the <em>Unsubscribe</em> link at the bottom of any email or by contacting us directly.</p>
+        </div>
+
+        <!-- GERMAN -->
+        <div id="content-de" class="lang-content">
+            <h2>1. Verantwortlicher</h2>
+            <p>Verantwortlicher für die Datenverarbeitung ist die Marke <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Erfasste Daten & Zweck</h2>
+            <p>Wir erfassen ausschließlich die E-Mail-Adresse, die Nutzer freiwillig bei der Anmeldung zum Newsletter angeben. Die Daten werden ausschließlich verwendet für:</p>
+            <ul>
+                <li>Das Senden von Updates zu neuen Buchveröffentlichungen.</li>
+                <li>Die Bereitstellung zusätzlicher kostenloser Materialien (Ausmalbilder, Poster).</li>
+                <li>Wichtige Neuigkeiten rund um die Marke.</li>
+            </ul>
+
+            <h2>3. Rechtsgrundlage</h2>
+            <p>Rechtsgrundlage für die Verarbeitung ist die ausdrückliche Einwilligung des Nutzers über das Kontrollkästchen im Anmeldeformular (Art. 6 Abs. 1 lit. a DSGVO).</p>
+
+            <h2>4. Speicherung & Drittanbieter</h2>
+            <p>Die Daten (E-Mail-Adresse, Zeitstempel und IP-Adresse) werden sicher über die für den Versand genutzte E-Mail-Marketing-Plattform gespeichert. Eine Weitergabe an Dritte findet nicht statt.</p>
+
+            <h2>5. Ihre Rechte & Abbestellung</h2>
+            <p>Gemäß DSGVO haben Sie das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten. Sie können sich jederzeit über den Abmeldelink (<em>Unsubscribe</em>) am Ende jeder E-Mail abmelden.</p>
+        </div>
+
+        <!-- ITALIAN -->
+        <div id="content-it" class="lang-content">
+            <h2>1. Titolare del Trattamento</h2>
+            <p>Il titolare del trattamento dei dati è il brand <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Dati Raccolti e Finalità</h2>
+            <p>Raccogliamo esclusivamente l'indirizzo email fornito volontariamente dagli utenti al momento dell'iscrizione alla newsletter. I dati vengono utilizzati unicamente per:</p>
+            <ul>
+                <li>Inviare aggiornamenti sulle nuove uscite editoriali e libri della serie.</li>
+                <li>Fornire materiale gratuito aggiuntivo (disegni da colorare, poster, risorse stampabili).</li>
+                <li>Comunicare novità o iniziative relative al brand.</li>
+            </ul>
+
+            <h2>3. Base Giuridica</h2>
+            <p>La base giuridica del trattamento è il consenso esplicito fornito dall'utente tramite la spunta della casella nel modulo di iscrizione (art. 6, par. 1, lett. a del GDPR).</p>
+
+            <h2>4. Conservazione e Servizi Terzi</h2>
+            <p>I dati (indirizzo email, data/ora di iscrizione e indirizzo IP) sono conservati in modo sicuro tramite la piattaforma di email marketing utilizzata per l'invio delle comunicazioni. I dati non saranno mai venduti o ceduti a terze parti.</p>
+
+            <h2>5. I tuoi Diritti e Cancellazione</h2>
+            <p>In conformità al GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica o la cancellazione. Puoi disiscriverti in qualsiasi momento cliccando sul link di cancellazione (<em>Unsubscribe</em>) presente in fondo a ogni email ricevuta o scrivendoci direttamente.</p>
+        </div>
+
+        <!-- FRENCH -->
+        <div id="content-fr" class="lang-content">
+            <h2>1. Responsable du traitement</h2>
+            <p>Le responsable du traitement des données est la marque <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Données collectées et finalités</h2>
+            <p>Nous collectons exclusivement l'adresse e-mail fournie volontairement lors de l'inscription à la newsletter. Ces données sont utilisées uniquement pour :</p>
+            <ul>
+                <li>Envoyer des actualités sur les nouvelles parutions de livres.</li>
+                <li>Fournir du matériel gratuit supplémentaire (coloriages, affiches).</li>
+                <li>Communiquer les nouveautés concernant la marque.</li>
+            </ul>
+
+            <h2>3. Base juridique</h2>
+            <p>La base juridique du traitement est le consentement explicite donné par l'utilisateur via la case à cocher du formulaire d'inscription (Art. 6(1)(a) RGPD).</p>
+
+            <h2>4. Conservation et tiers</h2>
+            <p>Les données (e-mail, date/heure d'inscription et adresse IP) sont stockées en toute sécurité via la plateforme d'e-mailing. Vos données ne seront jamais vendues à des tiers.</p>
+
+            <h2>5. Vos droits et désabonnement</h2>
+            <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Vous pouvez vous désabonner à tout moment via le lien figurant au bas de chaque e-mail.</p>
+        </div>
+
+        <!-- SPANISH -->
+        <div id="content-es" class="lang-content">
+            <h2>1. Responsable del Tratamiento</h2>
+            <p>El responsable del tratamiento de datos es la marca <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Datos Recopilados y Finalidad</h2>
+            <p>Recopilamos exclusivamente la dirección de correo electrónico proporcionada voluntariamente al suscribirse al boletín. Los datos se utilizan únicamente para:</p>
+            <ul>
+                <li>Enviar actualizaciones sobre nuevos lanzamientos de libros.</li>
+                <li>Proporcionar recursos gratuitos adicionales (dibujos, pósters).</li>
+                <li>Comunicar novedades de la marca.</li>
+            </ul>
+
+            <h2>3. Base Jurídica</h2>
+            <p>La base jurídica es el consentimiento explícito otorgado por el usuario mediante la casilla de verificación en el formulario de suscripción (Art. 6.1.a RGPD).</p>
+
+            <h2>4. Almacenamiento y Terceros</h2>
+            <p>Los datos (correo, fecha/hora e IP) se almacenan de forma segura a través de la plataforma de marketing por correo electrónico. Los datos nunca se venden a terceros.</p>
+
+            <h2>5. Tus Derechos y Cancelación</h2>
+            <p>De conformidad con el RGPD, tienes derecho a acceder, rectificar o suprimir tus datos. Puedes darte de baja en cualquier momento haciendo clic en el enlace de cancelación en cualquier correo.</p>
+        </div>
+
+        <!-- SWEDISH -->
+        <div id="content-sv" class="lang-content">
+            <h2>1. Personuppgiftsansvarig</h2>
+            <p>Personuppgiftsansvarig är varumärket <strong>Hoopsy & Quacky</strong> (<a href="mailto:hoopsyandquacky@gmail.com">hoopsyandquacky@gmail.com</a>).</p>
+
+            <h2>2. Insamlade uppgifter & Syfte</h2>
+            <p>Vi samlar enbart in den e-postadress som lämnas frivilligt vid prenumeration på nyhetsbrevet. Uppgifterna används endast för att:</p>
+            <ul>
+                <li>Skicka uppdateringar om nya boksläpp och seriens äventyr.</li>
+                <li>Tillhandahålla extra gratismaterial (målarbilder, poster).</li>
+                <li>Kommunicera nyheter kring varumärket.</li>
+            </ul>
+
+            <h2>3. Rättslig grund</h2>
+            <p>Den rättsliga grunden för behandlingen är det uttryckliga samtycke som ges via kryssrutan i prenumerationsformuläret (art. 6.1 a EU:s dataskyddsförordning GDPR).</p>
+
+            <h2>4. Lagring & Tredje part</h2>
+            <p>Uppgifterna (e-postadress, tidpunkt och IP-adress) lagras säkert via den e-postplattform som används för utskick. Uppgifterna säljs eller delas aldrig med tredje part.</p>
+
+            <h2>5. Dina rättigheter & Avregistrering</h2>
+            <p>I enlighet med GDPR har du rätt att begära tillgång till, rättelse eller radering av dina uppgifter. Du kan när som helst avregistrera dig via avlänken längst ner i varje utskick.</p>
+        </div>
+
+        <footer>
+            © Hoopsy & Quacky Series — Privacy Policy
+        </footer>
+    </div>
+
+    <script>
         // Switch displayed language
         function setLang(lang) {
             document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
@@ -693,7 +311,18 @@
             });
         }
 
-        window.onload = detectLanguage;
+        // Detect browser language at launch (Defaults to EN)
+        window.onload = function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['en', 'de', 'it', 'fr', 'es', 'sv'];
+            
+            if (supportedLangs.includes(langCode)) {
+                setLang(langCode);
+            } else {
+                setLang('en');
+            }
+        };
     </script>
 </body>
 </html>
