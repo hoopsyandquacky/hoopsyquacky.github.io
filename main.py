@@ -7,6 +7,13 @@ from googleapiclient.discovery import build
 # ID del Google Sheet appartenente a hoopsyquacky@gmail.com
 SPREADSHEET_ID = '1P_HNW-r7Lz6ygrQ6rbaCs4TTTawek8y9MtqdSgmbuus'
 
+# Mappa ufficiale dei materiali bonus condivisi su Google Drive
+BONUS_MATERIALS = {
+    'halloween': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing',
+    'christmas': 'https://drive.google.com/file/d/1lDWwQqzpFI45kRq0SlWK23TasL-PQbLX/view?usp=sharing',
+    'default': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing'
+}
+
 def load_credentials():
     """Carica le credenziali OAuth 2.0 dall'ambiente GitHub Secrets o da file locale."""
     if 'TOKEN_JSON' in os.environ:
@@ -28,39 +35,14 @@ def get_first_sheet_name(sheets_service):
         print(f"Avviso durante il recupero nome scheda: {e}")
     return 'Sheet1'
 
-def scan_drive_for_bonus(drive_service, search_query_text=""):
-    """Scansiona Google Drive e restituisce il link del primo file PDF utile con fallback intelligente."""
-    try:
-        results = drive_service.files().list(
-            q="mimeType = 'application/pdf' and trashed = false",
-            orderBy="createdTime desc",
-            fields="files(id, name, webViewLink)",
-            pageSize=10
-        ).execute()
-        files = results.get('files', [])
-
-        if not files:
-            print("Nessun PDF trovato su Google Drive.")
-            return "Nessun file bonus trovato"
-
-        query_lower = search_query_text.lower()
-        
-        # 1. Cerca una corrispondenza mirata basata sul nome del file
-        for file in files:
-            file_name_lower = file['name'].lower()
-            keywords = [w for w in file_name_lower.replace('_', ' ').replace('-', ' ').split() if len(w) > 3]
-            if any(kw in query_lower for kw in keywords):
-                print(f"Trovata corrispondenza mirata su Drive: {file['name']}")
-                return file.get('webViewLink', 'Nessun link disponibile')
-
-        # 2. Fallback intelligente: restituisce il PDF più recente disponibile
-        fallback_file = files[0]
-        print(f"Nessun match stretto, assegnato l'ultimo PDF caricato: {fallback_file['name']}")
-        return fallback_file.get('webViewLink', 'Nessun link disponibile')
-
-    except Exception as e:
-        print(f"Errore durante la scansione di Google Drive: {e}")
-        return "Errore scansione Drive"
+def get_bonus_link(subject_text):
+    """Seleziona il link bonus in base alle parole chiave presenti nell'oggetto."""
+    subject_lower = subject_text.lower()
+    if 'christmas' in subject_lower or 'natale' in subject_lower:
+        return BONUS_MATERIALS['christmas']
+    elif 'halloween' in subject_lower or 'hauntville' in subject_lower or 'mistero' in subject_lower:
+        return BONUS_MATERIALS['halloween']
+    return BONUS_MATERIALS['default']
 
 def detect_language(text):
     """Rileva la lingua dell'email per la profilazione nei mercati KDP."""
@@ -91,8 +73,8 @@ def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type,
     ).execute()
     print(f"Nuova richiesta registrata nel foglio per: {email}")
 
-def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name):
-    """Elabora le email non lette, scansiona Drive e aggiorna il foglio."""
+def process_incoming_emails(gmail_service, sheets_service, sheet_name):
+    """Elabora le email non lette, assegna il link bonus e aggiorna il foglio."""
     try:
         # Esclude le notifiche di sistema da GitHub
         results = gmail_service.users().messages().list(userId='me', q='is:unread -from:github.com', maxResults=10).execute()
@@ -129,7 +111,7 @@ def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_
             
             if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville', 'richiesta', 'request', 'christmas', 'natale']):
                 req_type = 'Richiesta Materiale Bonus'
-                drive_link = scan_drive_for_bonus(drive_service, search_query_text=subject)
+                drive_link = get_bonus_link(subject)
                 notes_text = f"Oggetto: {subject} | Link Bonus: {drive_link}"
             else:
                 req_type = 'Fan Mail / Generico'
@@ -153,15 +135,14 @@ def main():
     creds = load_credentials()
 
     gmail_service = build('gmail', 'v1', credentials=creds)
-    drive_service = build('drive', 'v3', credentials=creds)
     sheets_service = build('sheets', 'v4', credentials=creds)
 
-    print("Connessione a Gmail, Drive e Sheets completata con successo!")
+    print("Connessione a Gmail e Sheets completata con successo!")
 
     sheet_name = get_first_sheet_name(sheets_service)
     print(f"Scheda Google Sheets rilevata: {sheet_name}")
 
-    process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name)
+    process_incoming_emails(gmail_service, sheets_service, sheet_name)
 
 if __name__ == '__main__':
     main()
