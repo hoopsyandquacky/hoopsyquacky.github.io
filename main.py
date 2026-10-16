@@ -18,41 +18,30 @@ def load_credentials():
 def get_first_sheet_name(sheets_service):
     """Ottiene automaticamente il nome della prima scheda del foglio."""
     sheet_metadata = sheets_service.spreadsheets().get(spreadsheetId=SPREADSHEET_ID).execute()
-    sheets = sheet_metadata.get('sheets', [])
+    sheets = sheet_metadata.get('sheets', '')
     if sheets:
         return sheets[0].get('properties', {}).get('title', 'Sheet1')
     return 'Sheet1'
 
-def search_drive_bonus_file(drive_service, keywords=['halloween', 'bonus', 'adc']):
-    """Cerca su Google Drive un file che corrisponda alle parole chiave e restituisce il link."""
+def get_latest_drive_pdf(drive_service):
+    """Recupera automaticamente il link dell'ultimo file PDF disponibile su Google Drive."""
     try:
-        # Costruisce una query per cercare i file corrispondenti
-        query_parts = [f"name contains '{kw}'" for kw in keywords]
-        query = f"({' or '.join(query_parts)}) and trashed = false"
-        
         results = drive_service.files().list(
-            q=query,
+            q="mimeType = 'application/pdf' and trashed = false",
+            orderBy="createdTime desc",
+            pageSize=1,
             fields="files(id, name, webViewLink)"
         ).execute()
         files = results.get('files', [])
 
         if files:
             file_info = files[0]
-            print(f"File bonus trovato su Drive: {file_info['name']}")
+            print(f"File bonus prelevato da Drive: {file_info['name']}")
             return file_info.get('webViewLink', 'Nessun link disponibile')
         else:
-            print("Nessun file bonus specifico trovato su Drive, recupero primo PDF disponibile...")
-            # Fallback: cerca qualsiasi PDF
-            fallback_results = drive_service.files().list(
-                q="mimeType = 'application/pdf' and trashed = false",
-                fields="files(id, name, webViewLink)"
-            ).execute()
-            fallback_files = fallback_results.get('files', [])
-            if fallback_files:
-                return fallback_files[0].get('webViewLink', 'Nessun link disponibile')
-            return "Nessun file bonus trovato"
+            return "Nessun PDF trovato su Drive"
     except Exception as e:
-        print(f"Errore nella ricerca su Google Drive: {e}")
+        print(f"Errore accesso Google Drive: {e}")
         return "Errore accesso Drive"
 
 def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type, status, notes):
@@ -69,13 +58,14 @@ def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type,
     print(f"Registrata richiesta da: {email}")
 
 def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name):
-    """Cerca nuove email non lette, recupera eventuali risorse da Drive e salva nel foglio Google."""
+    """Cerca nuove email non lette reali, escludendo notifiche di sistema."""
     try:
-        results = gmail_service.users().messages().list(userId='me', q='is:unread', maxResults=10).execute()
+        # Filtra via le notifiche di GitHub o di sistema
+        results = gmail_service.users().messages().list(userId='me', q='is:unread -from:github.com', maxResults=10).execute()
         messages = results.get('messages', [])
 
         if not messages:
-            print("Nessuna nuova email non letta trovata.")
+            print("Nessuna nuova email da parte dei lettori trovata.")
             return
 
         print(f"Trovate {len(messages)} nuove email da elaborare.")
@@ -101,11 +91,11 @@ def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_
                 email = sender.split('<')[1].replace('>', '').strip()
 
             subj_lower = subject.lower()
-            lang = 'IT' if any(w in subj_lower for w in ['ciao', 'grazie', 'libro', 'salve', 'mistero', 'hauntville']) else 'EN'
+            lang = 'IT' if any(w in subj_lower for w in ['ciao', 'grazie', 'libro', 'salve', 'mistero', 'hauntville', 'richiesta']) else 'EN'
             
-            if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville']):
+            if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville', 'richiesta']):
                 req_type = 'Richiesta Materiale Bonus'
-                drive_link = search_drive_bonus_file(drive_service, keywords=['halloween', 'bonus', 'adc'])
+                drive_link = get_latest_drive_pdf(drive_service)
                 notes_text = f"Oggetto: {subject} | Link Bonus: {drive_link}"
             else:
                 req_type = 'Fan Mail / Generico'
