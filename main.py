@@ -4,8 +4,14 @@ from datetime import datetime
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-# ID del nuovo Google Sheet appartenente a hoopsyquacky@gmail.com
+# ID del Google Sheet appartenente a hoopsyquacky@gmail.com
 SPREADSHEET_ID = '1P_HNW-r7Lz6ygrQ6rbaCs4TTTawek8y9MtqdSgmbuus'
+
+# Mappa dei materiali bonus condivisi su Google Drive
+BONUS_MATERIALS = {
+    'halloween': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing',
+    'default': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing'
+}
 
 def load_credentials():
     """Carica le credenziali OAuth 2.0 dall'ambiente GitHub Secrets o da file locale."""
@@ -18,7 +24,7 @@ def load_credentials():
         raise FileNotFoundError("Nessun token di autenticazione trovato.")
 
 def get_first_sheet_name(sheets_service):
-    """Ottiene automaticamente il nome della prima scheda (es. Sheet1 o Foglio1)."""
+    """Ottiene automaticamente il nome della prima scheda del foglio (es. Sheet1)."""
     try:
         sheet_metadata = sheets_service.spreadsheets().get(spreadsheetId=SPREADSHEET_ID).execute()
         sheets = sheet_metadata.get('sheets', [])
@@ -28,29 +34,15 @@ def get_first_sheet_name(sheets_service):
         print(f"Avviso durante il recupero nome scheda: {e}")
     return 'Sheet1'
 
-def get_drive_pdf_link(drive_service):
-    """Recupera il link al primo PDF disponibile nella root del Drive."""
-    try:
-        results = drive_service.files().list(
-            q="mimeType = 'application/pdf' and trashed = false",
-            pageSize=5,
-            fields="files(id, name, webViewLink)"
-        ).execute()
-        files = results.get('files', [])
-
-        if files:
-            file_info = files[0]
-            print(f"File bonus individuato su Drive: {file_info['name']}")
-            return file_info.get('webViewLink', 'Nessun link disponibile')
-        else:
-            print("Nessun PDF trovato su Drive.")
-            return "File bonus non trovato"
-    except Exception as e:
-        print(f"Errore accesso Google Drive API: {e}")
-        return "Errore accesso Drive"
+def get_bonus_link(subject_text):
+    """Restituisce il link corretto in base alle parole chiave contenute nell'oggetto."""
+    text_lower = subject_text.lower()
+    if 'halloween' in text_lower or 'hauntville' in text_lower or 'mistero' in text_lower:
+        return BONUS_MATERIALS['halloween']
+    return BONUS_MATERIALS['default']
 
 def detect_language(text):
-    """Rileva la lingua dell'email per la profilazione dei mercati KDP."""
+    """Rileva la lingua dell'email per la profilazione nei mercati KDP."""
     text_lower = text.lower()
     if any(w in text_lower for w in ['ciao', 'grazie', 'salve', 'libro', 'mistero', 'richiesta']):
         return 'IT'
@@ -66,7 +58,7 @@ def detect_language(text):
         return 'EN'
 
 def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type, status, notes):
-    """Registra i dettagli del lettore nel Google Sheet."""
+    """Aggiunge la richiesta al database Google Sheets."""
     values = [[date, email, name, lang, req_type, status, notes]]
     body = {'values': values}
     sheets_service.spreadsheets().values().append(
@@ -76,12 +68,12 @@ def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type,
         insertDataOption='INSERT_ROWS',
         body=body
     ).execute()
-    print(f"Nuova richiesta registrata nel database per: {email}")
+    print(f"Nuova richiesta registrata nel foglio per: {email}")
 
-def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name):
-    """Elabora le email non lette, recupera i link bonus e aggiorna il foglio."""
+def process_incoming_emails(gmail_service, sheets_service, sheet_name):
+    """Elabora le email non lette, recupera il link bonus e aggiorna il foglio."""
     try:
-        # Filtra via le notifiche automatiche di GitHub
+        # Esclude le notifiche di sistema da GitHub
         results = gmail_service.users().messages().list(userId='me', q='is:unread -from:github.com', maxResults=10).execute()
         messages = results.get('messages', [])
 
@@ -116,7 +108,7 @@ def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_
             
             if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville', 'richiesta', 'request']):
                 req_type = 'Richiesta Materiale Bonus'
-                drive_link = get_drive_pdf_link(drive_service)
+                drive_link = get_bonus_link(subject)
                 notes_text = f"Oggetto: {subject} | Link Bonus: {drive_link}"
             else:
                 req_type = 'Fan Mail / Generico'
@@ -140,15 +132,14 @@ def main():
     creds = load_credentials()
 
     gmail_service = build('gmail', 'v1', credentials=creds)
-    drive_service = build('drive', 'v3', credentials=creds)
     sheets_service = build('sheets', 'v4', credentials=creds)
 
-    print("Connessione a Gmail, Drive e Sheets completata con successo!")
+    print("Connessione a Gmail e Sheets completata con successo!")
 
     sheet_name = get_first_sheet_name(sheets_service)
     print(f"Scheda Google Sheets rilevata: {sheet_name}")
 
-    process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name)
+    process_incoming_emails(gmail_service, sheets_service, sheet_name)
 
 if __name__ == '__main__':
     main()
