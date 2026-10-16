@@ -7,12 +7,6 @@ from googleapiclient.discovery import build
 # ID del Google Sheet appartenente a hoopsyquacky@gmail.com
 SPREADSHEET_ID = '1P_HNW-r7Lz6ygrQ6rbaCs4TTTawek8y9MtqdSgmbuus'
 
-# Mappa dei materiali bonus condivisi su Google Drive
-BONUS_MATERIALS = {
-    'halloween': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing',
-    'default': 'https://drive.google.com/file/d/1p_LuF491q_P2f8qUQor30G1X2Fpk2ylt/view?usp=sharing'
-}
-
 def load_credentials():
     """Carica le credenziali OAuth 2.0 dall'ambiente GitHub Secrets o da file locale."""
     if 'TOKEN_JSON' in os.environ:
@@ -34,12 +28,39 @@ def get_first_sheet_name(sheets_service):
         print(f"Avviso durante il recupero nome scheda: {e}")
     return 'Sheet1'
 
-def get_bonus_link(subject_text):
-    """Restituisce il link corretto in base alle parole chiave contenute nell'oggetto."""
-    text_lower = subject_text.lower()
-    if 'halloween' in text_lower or 'hauntville' in text_lower or 'mistero' in text_lower:
-        return BONUS_MATERIALS['halloween']
-    return BONUS_MATERIALS['default']
+def scan_drive_for_bonus(drive_service, search_query_text=""):
+    """Scansiona Google Drive e restituisce il link del file che meglio corrisponde alla richiesta."""
+    try:
+        # Recupera tutti i file PDF non cestinati
+        results = drive_service.files().list(
+            q="mimeType = 'application/pdf' and trashed = false",
+            fields="files(id, name, webViewLink)",
+            pageSize=20
+        ).execute()
+        files = results.get('files', [])
+
+        if not files:
+            print("Nessun PDF trovato su Google Drive.")
+            return "Nessun file bonus trovato"
+
+        # Pulisce il testo di ricerca
+        query_words = [w.lower() for w in search_query_text.split() if len(w) > 3]
+
+        # 1. Cerca una corrispondenza esatta tra le parole chiave dell'email e il nome del file
+        for file in files:
+            file_name_lower = file['name'].lower()
+            if any(word in file_name_lower for word in query_words):
+                print(f"Trovata corrispondenza dinamica su Drive: {file['name']}")
+                return file.get('webViewLink', 'Nessun link disponibile')
+
+        # 2. Se non trova parole chiave specifiche, restituisce il primo file PDF presente
+        fallback_file = files[0]
+        print(f"Nessuna parola chiave specifica trovata. Assegnato file predefinito: {fallback_file['name']}")
+        return fallback_file.get('webViewLink', 'Nessun link disponibile')
+
+    except Exception as e:
+        print(f"Errore durante la scansione di Google Drive: {e}")
+        return "Errore scansione Drive"
 
 def detect_language(text):
     """Rileva la lingua dell'email per la profilazione nei mercati KDP."""
@@ -70,8 +91,8 @@ def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type,
     ).execute()
     print(f"Nuova richiesta registrata nel foglio per: {email}")
 
-def process_incoming_emails(gmail_service, sheets_service, sheet_name):
-    """Elabora le email non lette, recupera il link bonus e aggiorna il foglio."""
+def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name):
+    """Elabora le email non lette, scansiona Drive e aggiorna il foglio."""
     try:
         # Esclude le notifiche di sistema da GitHub
         results = gmail_service.users().messages().list(userId='me', q='is:unread -from:github.com', maxResults=10).execute()
@@ -108,7 +129,8 @@ def process_incoming_emails(gmail_service, sheets_service, sheet_name):
             
             if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville', 'richiesta', 'request']):
                 req_type = 'Richiesta Materiale Bonus'
-                drive_link = get_bonus_link(subject)
+                # Scansiona Drive in tempo reale usando l'oggetto dell'email
+                drive_link = scan_drive_for_bonus(drive_service, search_query_text=subject)
                 notes_text = f"Oggetto: {subject} | Link Bonus: {drive_link}"
             else:
                 req_type = 'Fan Mail / Generico'
@@ -132,14 +154,15 @@ def main():
     creds = load_credentials()
 
     gmail_service = build('gmail', 'v1', credentials=creds)
+    drive_service = build('drive', 'v3', credentials=creds)
     sheets_service = build('sheets', 'v4', credentials=creds)
 
-    print("Connessione a Gmail e Sheets completata con successo!")
+    print("Connessione a Gmail, Drive e Sheets completata con successo!")
 
     sheet_name = get_first_sheet_name(sheets_service)
     print(f"Scheda Google Sheets rilevata: {sheet_name}")
 
-    process_incoming_emails(gmail_service, sheets_service, sheet_name)
+    process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name)
 
 if __name__ == '__main__':
     main()
