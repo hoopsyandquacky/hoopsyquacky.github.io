@@ -5,6 +5,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Hoopsy &amp; Quacky - Official Companion App &amp; Extras</title>
+<!-- Google tag (gtag.js) - Sostituisci G-XXXXXXXXXX con il tuo ID reale -->
+<script async="" src="https://www.googletagmanager.com/gtag.js?id=G-XXXXXXXXXX"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 <style>
         :root {
             --primary-color: #FF6B6B;
@@ -635,9 +643,20 @@
         © Hoopsy &amp; Quacky Series — All rights reserved.
     </footer>
 <script>
-        // Universally handles direct file downloads
+        // Gestione download diretto dei file con tracciamento Analytics
         function downloadFile(fileUrl, fileName) {
             console.log("Download avviato per: " + fileName);
+            
+            // Invia l'evento di tracciamento a Google Analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'download_pdf', {
+                    'event_category': 'Freebies',
+                    'event_label': fileName,
+                    'value': 1
+                });
+            }
+
+            // Esegue il download effettivo del file
             fetch(fileUrl)
                 .then(response => {
                     if (!response.ok) {
