@@ -23,23 +23,23 @@ def get_first_sheet_name(sheets_service):
         return sheets[0].get('properties', {}).get('title', 'Sheet1')
     return 'Sheet1'
 
-def get_latest_drive_pdf(drive_service):
-    """Recupera automaticamente il link dell'ultimo file PDF disponibile su Google Drive."""
+def get_drive_pdf_link(drive_service, filename="1adC_HALLOWEEN_BW.pdf"):
+    """Cerca su Google Drive il file PDF specifico per nome e ne restituisce il link."""
     try:
+        query = f"name = '{filename}' and trashed = false"
         results = drive_service.files().list(
-            q="mimeType = 'application/pdf' and trashed = false",
-            orderBy="createdTime desc",
-            pageSize=1,
+            q=query,
             fields="files(id, name, webViewLink)"
         ).execute()
         files = results.get('files', [])
 
         if files:
             file_info = files[0]
-            print(f"File bonus prelevato da Drive: {file_info['name']}")
+            print(f"File bonus trovato su Drive: {file_info['name']}")
             return file_info.get('webViewLink', 'Nessun link disponibile')
         else:
-            return "Nessun PDF trovato su Drive"
+            print(f"File '{filename}' non trovato su Drive.")
+            return "File bonus non trovato"
     except Exception as e:
         print(f"Errore accesso Google Drive: {e}")
         return "Errore accesso Drive"
@@ -60,7 +60,6 @@ def append_reader(sheets_service, sheet_name, date, email, name, lang, req_type,
 def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_name):
     """Cerca nuove email non lette reali, escludendo notifiche di sistema."""
     try:
-        # Filtra via le notifiche di GitHub o di sistema
         results = gmail_service.users().messages().list(userId='me', q='is:unread -from:github.com', maxResults=10).execute()
         messages = results.get('messages', [])
 
@@ -95,7 +94,7 @@ def process_incoming_emails(gmail_service, drive_service, sheets_service, sheet_
             
             if any(w in subj_lower for w in ['bonus', 'materiale', 'pdf', 'kit', 'download', 'halloween', 'hauntville', 'richiesta']):
                 req_type = 'Richiesta Materiale Bonus'
-                drive_link = get_latest_drive_pdf(drive_service)
+                drive_link = get_drive_pdf_link(drive_service, filename="1adC_HALLOWEEN_BW.pdf")
                 notes_text = f"Oggetto: {subject} | Link Bonus: {drive_link}"
             else:
                 req_type = 'Fan Mail / Generico'
