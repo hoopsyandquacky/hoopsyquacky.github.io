@@ -303,15 +303,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 Stay in Touch with Hoopsy &amp; Quacky!</h2>
-<p>Subscribe to our official newsletter to get free bonus coloring pages, sneak peeks at upcoming books, and fun updates!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-<input class="newsletter-input" name="email" placeholder="Your email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Subscribe Now</button>
+<h2>📩 Unlock Bloopers &amp; Secret Gallery!</h2>
+<p>Subscribe to our official newsletter to unlock exclusive unreleased sketches, blooper pages, and fun extra goodies!</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'en')">
+<input class="newsletter-input" id="email-en" placeholder="Your email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Unlock Secret Gallery 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-en" required="" type="checkbox"/>
-<label for="gdpr-en">I consent to the processing of personal data for newsletter updates. You can unsubscribe at any time via the link in every email. See our <a href="privacy.html?lang=en" target="_blank">Privacy Policy</a>.</label>
+<label for="gdpr-en">I consent to receiving newsletter updates &amp; bonus materials. You can unsubscribe anytime. See our <a href="privacy.html?lang=en" target="_blank">Privacy Policy</a>.</label>
 </div>
 </div>
 </div>
@@ -366,15 +366,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 Bleibe mit Hoopsy &amp; Quacky in Kontakt!</h2>
-<p>Abonniere unseren offiziellen Newsletter für kostenlose Extra-Ausmalbilder, Vorschauen auf neue Bücher und tolle Neuigkeiten!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Vielen Dank für deine Anmeldung!');">
-<input class="newsletter-input" name="email" placeholder="Deine E-Mail-Adresse..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Jetzt Abonnieren</button>
+<h2>📩 Geheime Galerie &amp; Bloopers Freischalten!</h2>
+<p>Abonniere unseren Newsletter, um unveröffentlichte Skizzen, lustige Bloopers und exklusives Bonusmaterial zu erhalten!</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'de')">
+<input class="newsletter-input" id="email-de" placeholder="Deine E-Mail-Adresse..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Jetzt Freischalten 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-de" required="" type="checkbox"/>
-<label for="gdpr-de">Ich stimme der Verarbeitung personenbezogener Daten für den Newsletter zu. Du kannst dich jederzeit über den Link in jeder E-Mail abmelden. Siehe <a href="privacy.html?lang=de" target="_blank">Datenschutz</a>.</label>
+<label for="gdpr-de">Ich stimme der Verarbeitung meiner Daten für den Newsletter zu. Abmeldung jederzeit möglich. Siehe <a href="privacy.html?lang=de" target="_blank">Datenschutz</a>.</label>
 </div>
 </div>
 </div>
@@ -429,15 +429,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 Resta in Contatto con Hoopsy &amp; Quacky!</h2>
-<p>Iscriviti alla newsletter ufficiale per ricevere disegni extra gratuiti, anteprime sui prossimi libri e novità sulle avventure in arrivo!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Grazie per esserti iscritto!');">
-<input class="newsletter-input" name="email" placeholder="La tua email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Iscriviti Ora</button>
+<h2>📩 Galleria Segreta &amp; Bloopers Inediti!</h2>
+<p>Iscriviti alla newsletter per sbloccare i bozzetti scartati, le scene inedite e i prossimi regalini di Hoopsy &amp; Quacky!</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'it')">
+<input class="newsletter-input" id="email-it" placeholder="La tua email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Sblocca Galleria Segreta 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-it" required="" type="checkbox"/>
-<label for="gdpr-it">Acconsento al trattamento dei dati personali per l'invio della newsletter. Puoi cancellarti in qualsiasi momento tramite il link in fondo a ogni email. Consulta la <a href="privacy.html?lang=it" target="_blank">Privacy Policy</a>.</label>
+<label for="gdpr-it">Acconsento al trattamento dei dati personali per l'invio della newsletter. Cancellazione sempre possibile. Consulta la <a href="privacy.html?lang=it" target="_blank">Privacy Policy</a>.</label>
 </div>
 </div>
 </div>
@@ -492,15 +492,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 Reste en Contact avec Hoopsy &amp; Quacky !</h2>
-<p>Inscris-toi à la newsletter officielle pour recevoir des coloriages bonus gratuits, des avant-premières et toutes les nouveautés !</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Merci pour votre inscription !');">
-<input class="newsletter-input" name="email" placeholder="Votre email..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">S'inscrire</button>
+<h2>📩 Galerie Secrète &amp; Bloopers !</h2>
+<p>Inscrivez-vous à la newsletter pour débloquer les croquis inédits, les coulisses et recevoir des bonus exclusifs !</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'fr')">
+<input class="newsletter-input" id="email-fr" placeholder="Votre email..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Débloquer la Galerie 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-fr" required="" type="checkbox"/>
-<label for="gdpr-fr">J'accepte le traitement des données personnelles pour recevoir la newsletter. Vous pouvez vous désabonner à tout moment via le lien dans chaque e-mail. Voir la <a href="privacy.html?lang=fr" target="_blank">Politique de confidentialité</a>.</label>
+<label for="gdpr-fr">J'accepte le traitement des données pour la newsletter. Désabonnement possible à tout moment. Voir la <a href="privacy.html?lang=fr" target="_blank">Politique de confidentialité</a>.</label>
 </div>
 </div>
 </div>
@@ -555,15 +555,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 ¡Mantente en Contacto con Hoopsy &amp; Quacky!</h2>
-<p>¡Suscríbete al boletín oficial para recibir dibujos extra gratis, adelantos de los próximos libros y divertidas novedades!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
-<input class="newsletter-input" name="email" placeholder="Tu correo electrónico..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Suscribirse</button>
+<h2>📩 ¡Galería Secreta &amp; Bloopers!</h2>
+<p>¡Suscríbete al boletín oficial para desbloquear bocetos inéditos, escenas divertidas y material exclusivo!</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'es')">
+<input class="newsletter-input" id="email-es" placeholder="Tu correo electrónico..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Desbloquear Galería 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-es" required="" type="checkbox"/>
-<label for="gdpr-es">Consiento el tratamiento de datos personales para recibir el boletín. Puedes darte de baja en cualquier momento mediante el enlace en cada correo. Ver <a href="privacy.html?lang=es" target="_blank">Política de Privacidad</a>.</label>
+<label for="gdpr-es">Consiento el tratamiento de datos para el boletín. Puedes darte de baja cuando quieras. Ver <a href="privacy.html?lang=es" target="_blank">Política de Privacidad</a>.</label>
 </div>
 </div>
 </div>
@@ -618,15 +618,15 @@
 </div></div>
 </div>
 <div class="card newsletter-card">
-<h2>📩 Håll Kontakten med Hoopsy &amp; Quacky!</h2>
-<p>Prenumerera på vårt officiella nyhetsbrev för att få gratis extra målarbilder, tjuvtittar på kommande böcker och roliga nyheter!</p>
-<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
-<input class="newsletter-input" name="email" placeholder="Din e-postadress..." required="" type="email"/>
-<button class="btn btn-primary" type="submit">Prenumerera Nu</button>
+<h2>📩 Hemlig Galleri &amp; Bloopers!</h2>
+<p>Prenumerera på nyhetsbrevet för att låsa upp opublicerade skisser, bloopers och exklusivt bonusmaterial!</p>
+<form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'sv')">
+<input class="newsletter-input" id="email-sv" placeholder="Din e-postadress..." required="" type="email"/>
+<button class="btn btn-primary" type="submit">Lås upp Galleri 🎁</button>
 </form>
 <div class="gdpr-container">
 <input id="gdpr-sv" required="" type="checkbox"/>
-<label for="gdpr-sv">Jag samtycker till behandling av personuppgifter för nyhetsbrevet. Du kan när som helst avregistrera dig via länken i varje e-postmeddelande. Se <a href="privacy.html?lang=sv" target="_blank">Integritetspolicy</a>.</label>
+<label for="gdpr-sv">Jag samtycker till behandling av personuppgifter för nyhetsbrevet. Avregistrera när som helst. Se <a href="privacy.html?lang=sv" target="_blank">Integritetspolicy</a>.</label>
 </div>
 </div>
 </div>
@@ -637,6 +637,7 @@
 <script>
         // Universally handles direct file downloads
         function downloadFile(fileUrl, fileName) {
+            console.log("Download avviato per: " + fileName);
             fetch(fileUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -658,6 +659,31 @@
                 .catch(error => {
                     window.location.href = fileUrl;
                 });
+        }
+
+        // Gestione Invio Newsletter & Automazione Companion Hub via mailto
+        function handleCompanionSubmission(event, lang) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-' + lang);
+            if (!emailInput) return;
+            
+            const userEmail = emailInput.value;
+            const recipient = "hoopsyquacky@gmail.com";
+            
+            const subjects = {
+                'it': 'Richiesta Bloopers e Materiale Bonus',
+                'en': 'Request Bloopers and Bonus Material',
+                'de': 'Anforderung Bloopers und Bonusmaterial',
+                'fr': 'Demande Bloopers et Materiel Bonus',
+                'es': 'Solicitud Bloopers y Material Bonus',
+                'sv': 'Begaran Bloopers och Bonusmaterial'
+            };
+
+            const subjectStr = subjects[lang] || subjects['en'];
+            const subject = encodeURIComponent(subjectStr);
+            const body = encodeURIComponent(`Ciao Hoopsy & Quacky!\n\nDesidero iscrivermi alla newsletter e sbloccare la galleria segreta dei Bloopers per l'email: ${userEmail}\n\nLingua: ${lang.toUpperCase()}`);
+
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
         }
 
         // Automatic Browser Language Detection (Defaults to EN)
