@@ -18,332 +18,633 @@
             --border-color: #e2e8f0;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: #1a252f;
-        }
+    header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        color: #1a252f;
+    }
 
-        header p {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-        }
+    header p {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+    }
 
-        .hub-container {
-            width: 100%;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
+    .hub-container {
+        width: 100%;
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
 
-        .book-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+    .freebie-item {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-        .book-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
+    .freebie-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
 
-        .badge-coming-soon {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--badge-red);
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .freebie-item img {
+        max-height: 260px;
+        max-width: 100%;
+        object-fit: contain;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
 
-        .cover-container {
-            width: 100%;
-            height: 260px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            background-color: #f1f5f9;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+    .freebie-item h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 10px 0;
+        line-height: 1.3;
+    }
 
-        .cover-container img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
+    .actions-wrapper {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
 
-        .book-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 0.95rem;
+    }
 
-        .book-actions {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .btn-small {
+        background-color: var(--accent-green);
+        color: #ffffff;
+    }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 0.95rem;
-        }
+    .btn-small:hover {
+        background-color: var(--accent-green-hover);
+    }
 
-        .btn-pdf {
-            background-color: var(--accent-green);
-            color: #ffffff;
-        }
+    .btn-amazon-circle {
+        background-color: var(--accent-orange);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        gap: 8px;
+        transition: background-color 0.2s ease;
+    }
 
-        .btn-pdf:hover {
-            background-color: var(--accent-green-hover);
-        }
+    .btn-amazon-circle:hover {
+        background-color: var(--accent-orange-hover);
+    }
 
-        .btn-amazon {
-            background-color: var(--accent-orange);
-            color: #ffffff;
-        }
+    /* Sezione Newsletter / Companion Form */
+    .newsletter-section {
+        width: 100%;
+        max-width: 1100px;
+        background: #ffffff;
+        border: 2px solid var(--accent-teal);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        box-sizing: border-box;
+    }
 
-        .btn-amazon:hover {
-            background-color: var(--accent-orange-hover);
-        }
+    .newsletter-section h2 {
+        margin-top: 0;
+        color: #1a252f;
+    }
 
-        /* Sezione Newsletter / Companion Form */
-        .newsletter-section {
-            width: 100%;
-            max-width: 1100px;
-            background: #ffffff;
-            border: 2px solid var(--accent-teal);
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            box-sizing: border-box;
-        }
+    .newsletter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-        .newsletter-section h2 {
-            margin-top: 0;
-            color: #1a252f;
-        }
+    .lang-card {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        .newsletter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
+    .lang-card h3 {
+        margin: 0 0 10px 0;
+        font-size: 1rem;
+        color: #334155;
+    }
 
-        .lang-card {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .lang-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 
-        .lang-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1rem;
-            color: #334155;
-        }
+    .lang-form input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 0.9rem;
+    }
 
-        .lang-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    .lang-form button {
+        background-color: var(--accent-teal);
+        color: #ffffff;
+        font-weight: bold;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
 
-        .lang-form input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 0.9rem;
-        }
+    .lang-form button:hover {
+        opacity: 0.9;
+    }
+</style>
 
-        .lang-form button {
-            background-color: var(--accent-teal);
-            color: #ffffff;
-            font-weight: bold;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
 
-        .lang-form button:hover {
-            opacity: 0.9;
-        }
-    </style>
-</head>
-<body>
+<header>
+    <h1>Hoopsy & Quacky - Companion Hub</h1>
+    <p>Scarica i PDF A4 da stampare e scopri la serie ufficiale</p>
+</header>
 
-    <header>
-        <h1>Hoopsy & Quacky - Companion Hub</h1>
-        <p>Scarica i PDF A4 da stampare e scopri la serie ufficiale</p>
-    </header>
-
-    <!-- La griglia dei libri verrà popolata in automatico dallo script Python -->
-    <div class="hub-container">
-        {BOOKS_GRID}
+<!-- La griglia dei libri verrà popolata dallo script Python nelle 6 lingue -->
+<div class="hub-container">
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>Mystery in Hauntville</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 Download PDF (A4)
+            </button>
+        </div>
     </div>
-
-    <!-- Sezione Newsletter Multilingua collegata a Google Sheets -->
-    <div class="newsletter-section">
-        <h2>🎁 Galleria Segreta & Contenuti Bonus</h2>
-        <p>Iscriviti per sbloccare i contenuti extra e ricevere gli aggiornamenti sulle nuove uscite nella tua lingua!</p>
-        
-        <div class="newsletter-grid">
-            <!-- Italiano -->
-            <div class="lang-card">
-                <h3>🇮🇹 Italiano</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'it')" class="lang-form">
-                    <input type="email" id="email-it" placeholder="Inserisci la tua email..." required>
-                    <button type="submit">Sblocca Bonus 🎁</button>
-                </form>
-            </div>
-
-            <!-- English -->
-            <div class="lang-card">
-                <h3>🇬🇧 English</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'en')" class="lang-form">
-                    <input type="email" id="email-en" placeholder="Enter your email..." required>
-                    <button type="submit">Unlock Bonus 🎁</button>
-                </form>
-            </div>
-
-            <!-- Deutsch -->
-            <div class="lang-card">
-                <h3>🇩🇪 Deutsch</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'de')" class="lang-form">
-                    <input type="email" id="email-de" placeholder="E-Mail-Adresse eingeben..." required>
-                    <button type="submit">Bonus freischalten 🎁</button>
-                </form>
-            </div>
-
-            <!-- Français -->
-            <div class="lang-card">
-                <h3>🇫🇷 Français</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'fr')" class="lang-form">
-                    <input type="email" id="email-fr" placeholder="Entrez votre email..." required>
-                    <button type="submit">Débloquer Bonus 🎁</button>
-                </form>
-            </div>
-
-            <!-- Español -->
-            <div class="lang-card">
-                <h3>🇪🇸 Español</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'es')" class="lang-form">
-                    <input type="email" id="email-es" placeholder="Tu correo electrónico..." required>
-                    <button type="submit">Desbloquear Bonus 🎁</button>
-                </form>
-            </div>
-
-            <!-- Svenska -->
-            <div class="lang-card">
-                <h3>🇸🇪 Svenska</h3>
-                <form onsubmit="handleCompanionSubmission(event, 'sv')" class="lang-form">
-                    <input type="email" id="email-sv" placeholder="Ange din e-postadress..." required>
-                    <button type="submit">Lås upp bonus 🎁</button>
-                </form>
-            </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="The Christmas Delivery LAST-MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>The Christmas Delivery LAST-MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 Download PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="SUN SEA and SURPRISES">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>SUN SEA and SURPRISES</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 Download PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOAL and NEW FRIENDS!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>GOAL and NEW FRIENDS!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 Download PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="The GREAT CHEESE-CHASE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>The GREAT CHEESE-CHASE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 Download PDF (A4)
+            </button>
         </div>
     </div>
 
-    <!-- Script backend per invio dati a Google Apps Script -->
-    <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Die RATSEL von HAUNTVILLE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+        <h3>Die RATSEL von HAUNTVILLE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 PDF Herunterladen (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="Die WEIHNACHTSLIEFERUNG LAST-MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+        <h3>Die WEIHNACHTSLIEFERUNG LAST-MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 PDF Herunterladen (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="MEER STRAND und ÜBERRASCHUNGEN">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+        <h3>MEER STRAND und ÜBERRASCHUNGEN</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 PDF Herunterladen (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="TOR und NEUE FREUNDE!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+        <h3>TOR und NEUE FREUNDE!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 PDF Herunterladen (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="Die GROSSE KÄSEJAGD">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+        <h3>Die GROSSE KÄSEJAGD</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 PDF Herunterladen (A4)
+            </button>
+        </div>
+    </div>
 
-    function handleCompanionSubmission(event, lang) {
-        event.preventDefault();
-        
-        const emailInput = document.getElementById('email-' + lang);
-        if (!emailInput || !emailInput.value) return;
-        
-        const form = emailInput.closest('form');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const userEmail = emailInput.value.trim();
-        
-        const thankYouMessages = {
-            'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
-            'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
-            'de': '🎉 Vielen Dank für deine Anmeldung! Deine Bonusinhalte sind freigeschaltet.',
-            'fr': '🎉 Merci pour votre inscription ! Vos contenus bonus sont débloqués.',
-            'es': '🎉 ¡Gracias por suscribirte! Tus contenidos bonus están desbloqueados.',
-            'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
-        };
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mistero a Hauntville">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>Mistero a Hauntville</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 Scarica PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="CONSEGNA di NATALE LAST_MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>CONSEGNA di NATALE LAST_MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 Scarica PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="SOLE SPIAGGIA e SORPRESE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>SOLE SPIAGGIA e SORPRESE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 Scarica PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOALS e NUOVI AMICI!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>GOALS e NUOVI AMICI!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 Scarica PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La CORSA-RINCORSA del FORMAGGIO">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+        <h3>La CORSA-RINCORSA del FORMAGGIO</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 Scarica PDF (A4)
+            </button>
+        </div>
+    </div>
 
-        submitBtn.disabled = true;
-        submitBtn.innerText = '⏳ ...';
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystère à Hauntville">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+        <h3>Mystère à Hauntville</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 Télécharger PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="La LIVRAISON DE NOËL LAST-MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+        <h3>La LIVRAISON DE NOËL LAST-MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 Télécharger PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="MER PLAGE et SURPRISES">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+        <h3>MER PLAGE et SURPRISES</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 Télécharger PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="BUT ET NOUVEAUX AMIS!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+        <h3>BUT ET NOUVEAUX AMIS!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 Télécharger PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La FOLLE COURSE au FROMAGE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+        <h3>La FOLLE COURSE au FROMAGE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 Télécharger PDF (A4)
+            </button>
+        </div>
+    </div>
 
-        fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: userEmail,
-                lang: lang
-            })
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Misterio en Hauntville">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+        <h3>Misterio en Hauntville</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 Descargar PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="La ENTREGA DE NAVIDAD LAST-MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+        <h3>La ENTREGA DE NAVIDAD LAST-MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 Descargar PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="El MISTERIO de HAUNTVILLE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+        <h3>El MISTERIO de HAUNTVILLE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 Descargar PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOLES y NUEVOS AMIGOS!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+        <h3>GOLES y NUEVOS AMIGOS!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 Descargar PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La LOCA CARRERA del QUESO">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+        <h3>La LOCA CARRERA del QUESO</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 Descargar PDF (A4)
+            </button>
+        </div>
+    </div>
+
+        <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mysteriet i Hauntville">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+        <h3>Mysteriet i Hauntville</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
+                📥 Ladda ner PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="Den JULLEVERANSEN LAST-MINUTE">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+        <h3>Den JULLEVERANSEN LAST-MINUTE</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
+                📥 Ladda ner PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_beach_BW.png" alt="HAV STRAND och OVERRASKNINGAR">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+        <h3>HAV STRAND och OVERRASKNINGAR</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">
+                📥 Ladda ner PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="MÅL OCH NYA VÄNNER!">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+        <h3>MÅL OCH NYA VÄNNER!</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">
+                📥 Ladda ner PDF (A4)
+            </button>
+        </div>
+    </div>
+    <div class="freebie-item">
+        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="OSTLOPPET och JAKTEN">
+        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+        <h3>OSTLOPPET och JAKTEN</h3>
+        <div class="actions-wrapper">
+            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">
+                📥 Ladda ner PDF (A4)
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Sezione Newsletter Multilingua collegata a Google Sheets -->
+<div class="newsletter-section">
+    <h2>🎁 Galleria Segreta & Contenuti Bonus</h2>
+    <p>Iscriviti per sbloccare i contenuti extra e ricevere gli aggiornamenti sulle nuove uscite nella tua lingua!</p>
+    
+    <div class="newsletter-grid">
+        <!-- Italiano -->
+        <div class="lang-card">
+            <h3>🇮🇹 Italiano</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'it')" class="lang-form">
+                <input type="email" id="email-it" placeholder="Inserisci la tua email..." required>
+                <button type="submit">Sblocca Bonus 🎁</button>
+            </form>
+        </div>
+
+        <!-- English -->
+        <div class="lang-card">
+            <h3>🇬🇧 English</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'en')" class="lang-form">
+                <input type="email" id="email-en" placeholder="Enter your email..." required>
+                <button type="submit">Unlock Bonus 🎁</button>
+            </form>
+        </div>
+
+        <!-- Deutsch -->
+        <div class="lang-card">
+            <h3>🇩🇪 Deutsch</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'de')" class="lang-form">
+                <input type="email" id="email-de" placeholder="E-Mail-Adresse eingeben..." required>
+                <button type="submit">Bonus freischalten 🎁</button>
+            </form>
+        </div>
+
+        <!-- Français -->
+        <div class="lang-card">
+            <h3>🇫🇷 Français</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'fr')" class="lang-form">
+                <input type="email" id="email-fr" placeholder="Entrez votre email..." required>
+                <button type="submit">Débloquer Bonus 🎁</button>
+            </form>
+        </div>
+
+        <!-- Español -->
+        <div class="lang-card">
+            <h3>🇪🇸 Español</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'es')" class="lang-form">
+                <input type="email" id="email-es" placeholder="Tu correo electrónico..." required>
+                <button type="submit">Desbloquear Bonus 🎁</button>
+            </form>
+        </div>
+
+        <!-- Svenska -->
+        <div class="lang-card">
+            <h3>🇸🇪 Svenska</h3>
+            <form onsubmit="handleCompanionSubmission(event, 'sv')" class="lang-form">
+                <input type="email" id="email-sv" placeholder="Ange din e-postadress..." required>
+                <button type="submit">Lås upp bonus 🎁</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Script backend per invio dati a Google Apps Script -->
+<script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+
+function downloadFile(filePath, fileName) {
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+function handleCompanionSubmission(event, lang) {
+    event.preventDefault();
+    
+    const emailInput = document.getElementById('email-' + lang);
+    if (!emailInput || !emailInput.value) return;
+    
+    const form = emailInput.closest('form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const userEmail = emailInput.value.trim();
+    
+    const thankYouMessages = {
+        'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
+        'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
+        'de': '🎉 Vielen Dank für deine Anmeldung! Deine Bonusinhalte sind freigeschaltet.',
+        'fr': '🎉 Merci pour votre inscription ! Vos contenus bonus sont débloqués.',
+        'es': '🎉 ¡Gracias por suscribirte! Tus contenidos bonus están desbloqueados.',
+        'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = '⏳ ...';
+
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: userEmail,
+            lang: lang
         })
-        .then(() => {
-            const message = thankYouMessages[lang] || thankYouMessages['en'];
-            form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 0.95rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
-        })
-        .catch(error => {
-            console.error('Errore durante l\'iscrizione:', error);
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'Riprova 🎁';
-            alert('Si è verificato un errore di connessione. Riprova tra poco!');
-        });
-    }
-    </script>
+    })
+    .then(() => {
+        const message = thankYouMessages[lang] || thankYouMessages['en'];
+        form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 0.95rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
+    })
+    .catch(error => {
+        console.error('Errore durante l\'iscrizione:', error);
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Riprova 🎁';
+        alert('Si è verificato un errore di connessione. Riprova tra poco!');
+    });
+}
+</script>
 </body>
 </html>
