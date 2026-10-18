@@ -159,6 +159,7 @@
             margin-top: 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             text-align: center;
+            box-sizing: border-box;
         }
 
         .newsletter-section h2 {
@@ -228,10 +229,11 @@
         <p>Scarica i PDF A4 da stampare e scopri la serie ufficiale</p>
     </header>
 
-    <!-- La griglia dei libri verrà popolata in automatico dallo script Python -->
+    <!-- GRID_START -->
     <div class="hub-container">
-        {BOOKS_GRID}
+        {GRID_CONTENT}
     </div>
+    <!-- GRID_END -->
 
     <!-- Sezione Newsletter Multilingua collegata a Google Sheets -->
     <div class="newsletter-section">
@@ -309,7 +311,6 @@
         const submitBtn = form.querySelector('button[type="submit"]');
         const userEmail = emailInput.value.trim();
         
-        // Messaggi di ringraziamento localizzati nelle 6 lingue
         const thankYouMessages = {
             'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
             'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
@@ -319,13 +320,12 @@
             'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
         };
 
-        // Feedback visivo durante il caricamento
         submitBtn.disabled = true;
         submitBtn.innerText = '⏳ ...';
 
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors', // Modalità necessaria per Google Apps Script da domini statici
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -335,7 +335,6 @@
             })
         })
         .then(() => {
-            // Sostituisce il form con il messaggio di conferma
             const message = thankYouMessages[lang] || thankYouMessages['en'];
             form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 0.95rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
         })
