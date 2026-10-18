@@ -237,18 +237,6 @@
             margin-left: 6px;
         }
 
-        /* Badge Coming Soon */
-        .coming-soon-badge {
-            display: inline-block;
-            background-color: #e0e0e0;
-            color: #666;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            width: 100%;
-        }
-
         /* Newsletter & GDPR */
         .newsletter-card {
             background: linear-gradient(135deg, #ffffff 0%, #f4fbfb 100%);
@@ -328,7 +316,7 @@
         <h1>Hoopsy & Quacky</h1>
         <p>Official Companion & Collection Hub</p>
         
-        <!-- Language Selector Buttons (Order: EN, DE, IT, FR, ES, SV) -->
+        <!-- Language Selector Buttons -->
         <div class="lang-switch">
             <button class="lang-btn active" onclick="setLang('en')">EN</button>
             <button class="lang-btn" onclick="setLang('de')">DE</button>
@@ -354,7 +342,7 @@
                 <h2>🎨 Free Coloring Pages & Books</h2>
                 <p>Download free black & white covers or grab your physical copy on Amazon!</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
         <h3>Mystery in Hauntville</h3>
@@ -436,7 +424,7 @@
                 <h2>🎨 Kostenlose Ausmalbilder & Bücher</h2>
                 <p>Lade kostenlose Ausmalbilder herunter oder hole dir dein Buch auf Amazon!</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Die RATSEL von HAUNTVILLE">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
         <h3>Die RATSEL von HAUNTVILLE</h3>
@@ -518,7 +506,7 @@
                 <h2>🎨 Disegni da Colorare & Libri della Serie</h2>
                 <p>Scarica gratis le copertine in bianco e nero o acquista la tua copia cartacea su Amazon!</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mistero a Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
         <h3>Mistero a Hauntville</h3>
@@ -600,7 +588,7 @@
                 <h2>🎨 Coloriages Gratuits & Livres</h2>
                 <p>Téléchargez des coloriages gratuits ou achetez votre livre sur Amazon !</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystère à Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
         <h3>Mystère à Hauntville</h3>
@@ -682,7 +670,7 @@
                 <h2>🎨 Páginas para Colorear & Libros</h2>
                 <p>¡Descarga cubiertas para colorear gratis o compra tu libro en Amazon!</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Misterio en Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
         <h3>Misterio en Hauntville</h3>
@@ -764,7 +752,7 @@
                 <h2>🎨 Gratis Målarbilder & Böcker</h2>
                 <p>Ladda ner gratis målarbilder eller köp din bok på Amazon!</p>
                 <div class="freebies-grid">
-                        <div class="freebie-item">
+    <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mysteriet i Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
         <h3>Mysteriet i Hauntville</h3>
@@ -838,6 +826,8 @@
     </footer>
 
     <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+
         function downloadFile(fileUrl, fileName) {
             console.log("Download avviato per: " + fileName);
             if (typeof gtag === 'function') {
@@ -872,25 +862,45 @@
         function handleCompanionSubmission(event, lang) {
             event.preventDefault();
             const emailInput = document.getElementById('email-' + lang);
-            if (!emailInput) return;
+            if (!emailInput || !emailInput.value) return;
             
-            const userEmail = emailInput.value;
-            const recipient = "hoopsyquacky@gmail.com";
+            const form = emailInput.closest('form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const userEmail = emailInput.value.trim();
             
-            const subjects = {
-                'it': 'Richiesta Bloopers e Materiale Bonus',
-                'en': 'Request Bloopers and Bonus Material',
-                'de': 'Anfrage Bloopers und Bonusmaterial',
-                'fr': 'Demande Bloopers et Matériel Bonus',
-                'es': 'Solicitud de Bloopers y Material Bonus',
-                'sv': 'Begäran om Bloopers och Bonusmaterial'
+            const thankYouMessages = {
+                'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
+                'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
+                'de': '🎉 Vielen Dank für deine Anmeldung! Deine Bonusinhalte sind freigeschaltet.',
+                'fr': '🎉 Merci pour votre inscription ! Vos contenus bonus sont débloqués.',
+                'es': '🎉 ¡Gracias por suscribirte! Tus contenidos bonus están desbloqueados.',
+                'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
             };
 
-            const subjectStr = subjects[lang] || subjects['en'];
-            const subject = encodeURIComponent(subjectStr);
-            const body = encodeURIComponent(`Ciao Hoopsy & Quacky!\n\nDesidero iscrivermi alla newsletter per: ${userEmail}\nLingua: ${lang.toUpperCase()}`);
+            submitBtn.disabled = true;
+            submitBtn.innerText = '⏳ ...';
 
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userEmail,
+                    lang: lang
+                })
+            })
+            .then(() => {
+                const message = thankYouMessages[lang] || thankYouMessages['en'];
+                form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 1rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
+            })
+            .catch(error => {
+                console.error('Errore durante l\'iscrizione:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Sblocca Bonus 🎁';
+                alert('Si è verificato un errore di connessione. Riprova tra poco!');
+            });
         }
 
         function detectLanguage() {
