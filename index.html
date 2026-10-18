@@ -1,224 +1,360 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoopsy & Quacky - Companion Hub</title>
+    <title>Hoopsy & Quacky - Official Companion App & Extras</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-9EJ6Z7RG2X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9EJ6Z7RG2X');
+    </script>
+
     <style>
         :root {
-            --primary-bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --accent-green: #2ecc71;
-            --accent-green-hover: #27ae60;
-            --accent-orange: #e67e22;
-            --accent-orange-hover: #d35400;
-            --accent-teal: #4ECDC4;
-            --badge-red: #e74c3c;
-            --border-color: #e2e8f0;
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --amazon-color: #FF9900;
+            --amazon-hover: #E68A00;
+            --text-color: #2F2F2F;
+            --bg-color: #F7F9FC;
+            --card-bg: #FFFFFF;
         }
 
-            body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--primary-bg);
-        color: var(--text-color);
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    header h1 {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-        color: #1a252f;
-    }
+        header {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+        }
 
-    header p {
-        font-size: 1.1rem;
-        color: #7f8c8d;
-    }
+        .lang-switch {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-    .hub-container {
-        width: 100%;
-        max-width: 1100px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-    }
+        .lang-btn {
+            background: #eee;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
 
-    .freebie-item {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        border: 1px solid var(--border-color);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .lang-btn.active, .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-    .freebie-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
 
-    .freebie-item img {
-        max-height: 260px;
-        max-width: 100%;
-        object-fit: contain;
-        margin-bottom: 15px;
-        border-radius: 8px;
-    }
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+        }
 
-    .freebie-item h3 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin: 10px 0;
-        line-height: 1.3;
-    }
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
 
-    .actions-wrapper {
-        margin-top: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
 
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 16px;
-        border-radius: 6px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.2s ease;
-        cursor: pointer;
-        border: none;
-        font-size: 0.95rem;
-    }
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
 
-    .btn-small {
-        background-color: var(--accent-green);
-        color: #ffffff;
-    }
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+            text-decoration: none;
+        }
 
-    .btn-small:hover {
-        background-color: var(--accent-green-hover);
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #3db8b0;
+        }
 
-    .btn-amazon-circle {
-        background-color: var(--accent-orange);
-        color: #ffffff;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 16px;
-        border-radius: 6px;
-        font-weight: 600;
-        text-decoration: none;
-        gap: 8px;
-        transition: background-color 0.2s ease;
-    }
+        .btn-primary {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
 
-    .btn-amazon-circle:hover {
-        background-color: var(--accent-orange-hover);
-    }
+        .btn-primary:hover {
+            background-color: #ee5253;
+        }
 
-    /* Sezione Newsletter / Companion Form */
-    .newsletter-section {
-        width: 100%;
-        max-width: 1100px;
-        background: #ffffff;
-        border: 2px solid var(--accent-teal);
-        border-radius: 12px;
-        padding: 30px;
-        margin-top: 40px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        box-sizing: border-box;
-    }
+        /* Galleria dei Freebies & Card Prodotto */
+        .freebies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
 
-    .newsletter-section h2 {
-        margin-top: 0;
-        color: #1a252f;
-    }
+        .freebie-item {
+            background: #fafbfc;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
 
-    .newsletter-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
+        .freebie-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
 
-    .lang-card {
-        background: #f8fafc;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        .freebie-item h3 {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 0.8rem;
+        }
 
-    .lang-card h3 {
-        margin: 0 0 10px 0;
-        font-size: 1rem;
-        color: #334155;
-    }
+        .btn-small {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.95rem;
+            width: 100%;
+        }
 
-    .lang-form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
+        /* --- BOTTONE CIRCOLARE AMAZON CON OVERLAY ESPANDIBILE --- */
+        .actions-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            position: relative;
+        }
 
-    .lang-form input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        box-sizing: border-box;
-        font-size: 0.9rem;
-    }
+        .btn-amazon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: var(--amazon-color);
+            color: #111;
+            width: 42px;
+            height: 42px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 3px 8px rgba(255, 153, 0, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0 10px;
+            cursor: pointer;
+            border: 1px solid #e68a00;
+            flex-shrink: 0;
+        }
 
-    .lang-form button {
-        background-color: var(--accent-teal);
-        color: #ffffff;
-        font-weight: bold;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: opacity 0.2s;
-    }
+        .btn-amazon-circle .cart-icon {
+            font-size: 1.2rem;
+            min-width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .lang-form button:hover {
-        opacity: 0.9;
-    }
-</style>
+        .btn-amazon-circle .buy-text {
+            font-size: 0.85rem;
+            font-weight: bold;
+            opacity: 0;
+            max-width: 0;
+            transition: all 0.3s ease;
+            color: #111;
+        }
 
+        .btn-amazon-circle:hover, .btn-amazon-circle:focus {
+            width: auto;
+            max-width: 200px;
+            padding: 0 14px 0 10px;
+            background-color: var(--amazon-hover);
+            box-shadow: 0 5px 12px rgba(255, 153, 0, 0.6);
+        }
 
-<header>
-    <h1>Hoopsy & Quacky - Companion Hub</h1>
-    <p>Scarica i PDF A4 da stampare e scopri la serie ufficiale</p>
-</header>
+        .btn-amazon-circle:hover .buy-text, .btn-amazon-circle:focus .buy-text {
+            opacity: 1;
+            max-width: 150px;
+            margin-left: 6px;
+        }
 
-<!-- La griglia dei libri verrà popolata dallo script Python nelle 6 lingue -->
-<div class="hub-container">
-        <div class="freebie-item">
+        /* Badge Coming Soon */
+        .coming-soon-badge {
+            display: inline-block;
+            background-color: #e0e0e0;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        /* Newsletter & GDPR */
+        .newsletter-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f4fbfb 100%);
+            border: 2px dashed var(--secondary-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 1rem auto 0.5rem auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .gdpr-container {
+            max-width: 500px;
+            margin: 0.5rem auto 0 auto;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .gdpr-container input[type="checkbox"] {
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        .gdpr-container label {
+            cursor: pointer;
+        }
+
+        .gdpr-container a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #eee;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hoopsy & Quacky</h1>
+        <p>Official Companion & Collection Hub</p>
+        
+        <!-- Language Selector Buttons (Order: EN, DE, IT, FR, ES, SV) -->
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('de')">DE</button>
+            <button class="lang-btn" onclick="setLang('it')">IT</button>
+            <button class="lang-btn" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('sv')">SV</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ENGLISH CONTENT -->
+        <div id="content-en" class="lang-content active">
+            <div class="card">
+                <h2>Collection Poster (A3 Format)</h2>
+                <p>Download and print the official A3 Master Poster! Every time you finish a book in the series, cut out the special badge from the book and paste it onto your poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Download A3 Poster
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Free Coloring Pages & Books</h2>
+                <p>Download free black & white covers or grab your physical copy on Amazon!</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
         <h3>Mystery in Hauntville</h3>
@@ -269,7 +405,38 @@
         </div>
     </div>
 
-        <div class="freebie-item">
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Unlock Bloopers & Secret Gallery!</h2>
+                <p>Subscribe to our official newsletter to unlock exclusive unreleased sketches, blooper pages, and fun extra goodies!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'en')">
+                    <input type="email" id="email-en" placeholder="Your email..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Unlock Secret Gallery 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-en">
+                    <label for="gdpr-en">I consent to receiving newsletter updates & bonus materials. See our <a href="privacy.html?lang=en" target="_blank">Privacy Policy</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- GERMAN CONTENT -->
+        <div id="content-de" class="lang-content">
+            <div class="card">
+                <h2>Sammelposter (Format A3)</h2>
+                <p>Lade das offizielle A3-Sammelposter herunter und drucke es aus! Jedes Mal, wenn du ein Buch aus der Reihe gelesen hast, schneide das Abzeichen aus und klebe es auf dein Poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 A3-Poster Herunterladen
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Kostenlose Ausmalbilder & Bücher</h2>
+                <p>Lade kostenlose Ausmalbilder herunter oder hole dir dein Buch auf Amazon!</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Die RATSEL von HAUNTVILLE">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
         <h3>Die RATSEL von HAUNTVILLE</h3>
@@ -320,7 +487,38 @@
         </div>
     </div>
 
-        <div class="freebie-item">
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Geheime Galerie & Bloopers Freischalten!</h2>
+                <p>Abonniere unseren Newsletter, um exklusive Skizzen und Extras freizuschalten!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'de')">
+                    <input type="email" id="email-de" placeholder="Deine E-Mail..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Geheime Galerie Freischalten 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-de">
+                    <label for="gdpr-de">Ich stimme dem Erhalt von Newslettern zu. Siehe <a href="privacy.html?lang=de" target="_blank">Datenschutzerklärung</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITALIAN CONTENT -->
+        <div id="content-it" class="lang-content">
+            <div class="card">
+                <h2>Il Poster della Collezione (A3)</h2>
+                <p>Scarica e stampa il Poster A3 ufficiale! Ogni volta che completi un libro della serie, ritaglia lo sticker-badge speciale dal libro e incollalo sul tuo poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Scarica il Poster A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Disegni da Colorare & Libri della Serie</h2>
+                <p>Scarica gratis le copertine in bianco e nero o acquista la tua copia cartacea su Amazon!</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mistero a Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
         <h3>Mistero a Hauntville</h3>
@@ -371,7 +569,38 @@
         </div>
     </div>
 
-        <div class="freebie-item">
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Galleria Segreta & Bloopers Inediti!</h2>
+                <p>Iscriviti alla newsletter per sbloccare i bozzetti scartati, le scene inedite e i prossimi regalini di Hoopsy & Quacky!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'it')">
+                    <input type="email" id="email-it" placeholder="La tua email..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Sblocca Galleria Segreta 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-it">
+                    <label for="gdpr-it">Acconsento al trattamento dei dati personali per la newsletter. Consulta la <a href="privacy.html?lang=it" target="_blank">Privacy Policy</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRENCH CONTENT -->
+        <div id="content-fr" class="lang-content">
+            <div class="card">
+                <h2>Affiche de Collection (Format A3)</h2>
+                <p>Téléchargez et imprimez l'affiche A3 officielle ! Chaque fois que vous terminez un livre, découpez le badge et collez-le sur votre affiche.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Télécharger l'Affiche A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Coloriages Gratuits & Livres</h2>
+                <p>Téléchargez des coloriages gratuits ou achetez votre livre sur Amazon !</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystère à Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
         <h3>Mystère à Hauntville</h3>
@@ -422,7 +651,38 @@
         </div>
     </div>
 
-        <div class="freebie-item">
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Galerie Secrète & Bloopers !</h2>
+                <p>Abonnez-vous à la newsletter pour débloquer des croquis inédits et des bonus gratuits !</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'fr')">
+                    <input type="email" id="email-fr" placeholder="Votre e-mail..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Débloquer la Galerie 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-fr">
+                    <label for="gdpr-fr">J'accepte de recevoir la newsletter. Voir la <a href="privacy.html?lang=fr" target="_blank">Politique de Confidentialité</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPANISH CONTENT -->
+        <div id="content-es" class="lang-content">
+            <div class="card">
+                <h2>Póster de Colección (Formato A3)</h2>
+                <p>¡Descarga e imprime el póster A3 oficial! Cada vez que termines un libro, recorta la insignia y pégala en tu póster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Descargar Póster A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Páginas para Colorear & Libros</h2>
+                <p>¡Descarga cubiertas para colorear gratis o compra tu libro en Amazon!</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Misterio en Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
         <h3>Misterio en Hauntville</h3>
@@ -473,7 +733,38 @@
         </div>
     </div>
 
-        <div class="freebie-item">
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 ¡Galería Secreta y Bloopers!</h2>
+                <p>¡Suscríbete al boletín para desbloquear bocetos inéditos y regalos especiales!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'es')">
+                    <input type="email" id="email-es" placeholder="Tu correo electrónico..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Desbloquear Galería 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-es">
+                    <label for="gdpr-es">Acepto recibir el boletín. Consulta la <a href="privacy.html?lang=es" target="_blank">Política de Privacidad</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWEDISH CONTENT -->
+        <div id="content-sv" class="lang-content">
+            <div class="card">
+                <h2>Samlarposter (A3-format)</h2>
+                <p>Ladda ner och skriv ut den officiella A3-postern! Varje gång du läst ut en bok, klipp ut märket och klistra fast det på din poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('poster/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Ladda ner A3-poster
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Gratis Målarbilder & Böcker</h2>
+                <p>Ladda ner gratis målarbilder eller köp din bok på Amazon!</p>
+                <div class="freebies-grid">
+                        <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mysteriet i Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
         <h3>Mysteriet i Hauntville</h3>
@@ -524,127 +815,106 @@
         </div>
     </div>
 
-</div>
+                </div>
+            </div>
 
-<!-- Sezione Newsletter Multilingua collegata a Google Sheets -->
-<div class="newsletter-section">
-    <h2>🎁 Galleria Segreta & Contenuti Bonus</h2>
-    <p>Iscriviti per sbloccare i contenuti extra e ricevere gli aggiornamenti sulle nuove uscite nella tua lingua!</p>
-    
-    <div class="newsletter-grid">
-        <!-- Italiano -->
-        <div class="lang-card">
-            <h3>🇮🇹 Italiano</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'it')" class="lang-form">
-                <input type="email" id="email-it" placeholder="Inserisci la tua email..." required>
-                <button type="submit">Sblocca Bonus 🎁</button>
-            </form>
+            <div class="card newsletter-card">
+                <h2>📩 Hemligt Galleri & Bloopers!</h2>
+                <p>Prenumerera på vårt nyhetsbrev för att låsa upp exklusiva skisser och bonusmaterial!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'sv')">
+                    <input type="email" id="email-sv" placeholder="Din e-postadress..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Lås upp Galleriet 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-sv">
+                    <label for="gdpr-sv">Jag godkänner att ta emot nyhetsbrev. Se <a href="privacy.html?lang=sv" target="_blank">Integritetspolicy</a>.</label>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <!-- English -->
-        <div class="lang-card">
-            <h3>🇬🇧 English</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'en')" class="lang-form">
-                <input type="email" id="email-en" placeholder="Enter your email..." required>
-                <button type="submit">Unlock Bonus 🎁</button>
-            </form>
-        </div>
+    <footer>
+        © Hoopsy & Quacky Series — All rights reserved.
+    </footer>
 
-        <!-- Deutsch -->
-        <div class="lang-card">
-            <h3>🇩🇪 Deutsch</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'de')" class="lang-form">
-                <input type="email" id="email-de" placeholder="E-Mail-Adresse eingeben..." required>
-                <button type="submit">Bonus freischalten 🎁</button>
-            </form>
-        </div>
+    <script>
+        function downloadFile(fileUrl, fileName) {
+            console.log("Download avviato per: " + fileName);
+            if (typeof gtag === 'function') {
+                gtag('event', 'download_pdf', {
+                    'event_category': 'Freebies',
+                    'event_label': fileName,
+                    'value': 1
+                });
+            }
 
-        <!-- Français -->
-        <div class="lang-card">
-            <h3>🇫🇷 Français</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'fr')" class="lang-form">
-                <input type="email" id="email-fr" placeholder="Entrez votre email..." required>
-                <button type="submit">Débloquer Bonus 🎁</button>
-            </form>
-        </div>
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    window.location.href = fileUrl;
+                });
+        }
 
-        <!-- Español -->
-        <div class="lang-card">
-            <h3>🇪🇸 Español</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'es')" class="lang-form">
-                <input type="email" id="email-es" placeholder="Tu correo electrónico..." required>
-                <button type="submit">Desbloquear Bonus 🎁</button>
-            </form>
-        </div>
+        function handleCompanionSubmission(event, lang) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-' + lang);
+            if (!emailInput) return;
+            
+            const userEmail = emailInput.value;
+            const recipient = "hoopsyquacky@gmail.com";
+            
+            const subjects = {
+                'it': 'Richiesta Bloopers e Materiale Bonus',
+                'en': 'Request Bloopers and Bonus Material',
+                'de': 'Anfrage Bloopers und Bonusmaterial',
+                'fr': 'Demande Bloopers et Matériel Bonus',
+                'es': 'Solicitud de Bloopers y Material Bonus',
+                'sv': 'Begäran om Bloopers och Bonusmaterial'
+            };
 
-        <!-- Svenska -->
-        <div class="lang-card">
-            <h3>🇸🇪 Svenska</h3>
-            <form onsubmit="handleCompanionSubmission(event, 'sv')" class="lang-form">
-                <input type="email" id="email-sv" placeholder="Ange din e-postadress..." required>
-                <button type="submit">Lås upp bonus 🎁</button>
-            </form>
-        </div>
-    </div>
-</div>
+            const subjectStr = subjects[lang] || subjects['en'];
+            const subject = encodeURIComponent(subjectStr);
+            const body = encodeURIComponent(`Ciao Hoopsy & Quacky!\n\nDesidero iscrivermi alla newsletter per: ${userEmail}\nLingua: ${lang.toUpperCase()}`);
 
-<!-- Script backend per invio dati a Google Apps Script -->
-<script>
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        }
 
-function downloadFile(filePath, fileName) {
-    const link = document.createElement('a');
-    link.href = filePath;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['en', 'de', 'it', 'fr', 'es', 'sv'];
+            setLang(supportedLangs.includes(langCode) ? langCode : 'en');
+        }
 
-function handleCompanionSubmission(event, lang) {
-    event.preventDefault();
-    
-    const emailInput = document.getElementById('email-' + lang);
-    if (!emailInput || !emailInput.value) return;
-    
-    const form = emailInput.closest('form');
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const userEmail = emailInput.value.trim();
-    
-    const thankYouMessages = {
-        'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
-        'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
-        'de': '🎉 Vielen Dank für deine Anmeldung! Deine Bonusinhalte sind freigeschaltet.',
-        'fr': '🎉 Merci pour votre inscription ! Vos contenus bonus sont débloqués.',
-        'es': '🎉 ¡Gracias por suscribirte! Tus contenidos bonus están desbloqueados.',
-        'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
-    };
+        function setLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
 
-    submitBtn.disabled = true;
-    submitBtn.innerText = '⏳ ...';
+            const targetContent = document.getElementById('content-' + lang) || document.getElementById('content-en');
+            targetContent.classList.add('active');
 
-    fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email: userEmail,
-            lang: lang
-        })
-    })
-    .then(() => {
-        const message = thankYouMessages[lang] || thankYouMessages['en'];
-        form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 0.95rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
-    })
-    .catch(error => {
-        console.error('Errore durante l\'iscrizione:', error);
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Riprova 🎁';
-        alert('Si è verificato un errore di connessione. Riprova tra poco!');
-    });
-}
-</script>
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase() === lang.toLowerCase()) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        window.onload = detectLanguage;
+    </script>
 </body>
 </html>
