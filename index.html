@@ -829,7 +829,7 @@
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
         
         // Inserisci qui il link della tua cartella Google Drive con i bloopers
-        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=drive_link"; 
+        const DRIVE_FOLDER_URL = "INCOLLA_QUI_IL_LINK_DELLA_CARTELLA_DRIVE"; 
 
         function downloadFile(fileUrl, fileName) {
             console.log("Download avviato per: " + fileName);
@@ -871,31 +871,34 @@
             const submitBtn = form.querySelector('button[type="submit"]');
             const userEmail = emailInput.value.trim();
             
+            // Inserisci qui il link della tua cartella Google Drive con i bloopers
+            const DRIVE_FOLDER_URL = "INCOLLA_QUI_IL_LINK_DELLA_CARTELLA_DRIVE";
+
             const successData = {
                 'it': { text: '🎉 Iscrizione completata! Ecco i tuoi bonus:', linkText: '📥 Apri Galleria & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
                 'en': { text: '🎉 Subscribed successfully! Here are your bonuses:', linkText: '📥 Open Gallery & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
                 'de': { text: '🎉 Anmeldung erfolgreich! Hier sind deine Boni:', linkText: '📥 Galerie & Bloopers öffnen (Drive)', url: DRIVE_FOLDER_URL },
                 'fr': { text: '🎉 Inscription réussie ! Voici vos bonus :', linkText: '📥 Ouvrir la Galerie & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
-                'es': { text: '🎉 ¡Suscripción exitosa! Aquí tienes tus bonus:', linkText: '📥 Abrir Galería y Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'es': { text: '¡Suscripción exitosa! Aquí tienes tus bonus:', linkText: '📥 Abrir Galería y Bloopers (Drive)', url: DRIVE_FOLDER_URL },
                 'sv': { text: '🎉 Prenumerationen lyckades! Här är dina bonusar:', linkText: '📥 Öppna Galleri & Bloopers (Drive)', url: DRIVE_FOLDER_URL }
             };
 
             submitBtn.disabled = true;
             submitBtn.innerText = '⏳ ...';
 
-            // Invio dei dati tramite URLSearchParams (garantisce il salvataggio immediato sul foglio con no-cors)
-            const formData = new URLSearchParams();
-            formData.append('email', userEmail);
-            formData.append('lang', lang);
-
+            // Invio JSON pulito come faceva la versione originale funzionante
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: formData
-            }).catch(err => console.log('Background sync:', err));
-
-            // Mostra subito il messaggio e sblocca il pulsante Drive
-            setTimeout(() => {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userEmail,
+                    lang: lang
+                })
+            })
+            .then(() => {
                 const data = successData[lang] || successData['en'];
                 form.innerHTML = `
                     <div style="margin-top: 10px;">
@@ -904,7 +907,13 @@
                             ${data.linkText}
                         </a>
                     </div>`;
-            }, 300);
+            })
+            .catch(error => {
+                console.error('Errore durante l\'iscrizione:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Sblocca Bonus 🎁';
+                alert('Si è verificato un errore di connessione. Riprova tra poco!');
+            });
         }
 
         function detectLanguage() {
