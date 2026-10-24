@@ -884,18 +884,21 @@
             submitBtn.disabled = true;
             submitBtn.innerText = '⏳ ...';
 
+            // Invio dei dati in background con un'immagine beacon o fetch sicura no-cors
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain;charset=utf-8',
                 },
                 body: JSON.stringify({
                     email: userEmail,
                     lang: lang
                 })
-            })
-            .then(() => {
+            }).catch(err => console.log('Background sync:', err));
+
+            // Mostriamo immediatamente il messaggio e il link Drive senza blocchi
+            setTimeout(() => {
                 const data = successData[lang] || successData['en'];
                 form.innerHTML = `
                     <div style="margin-top: 10px;">
@@ -904,13 +907,7 @@
                             ${data.linkText}
                         </a>
                     </div>`;
-            })
-            .catch(error => {
-                console.error('Errore durante l\'iscrizione:', error);
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Sblocca Bonus 🎁';
-                alert('Si è verificato un errore di connessione. Riprova tra poco!');
-            });
+            }, 400);
         }
 
         function detectLanguage() {
