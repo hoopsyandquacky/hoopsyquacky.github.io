@@ -176,67 +176,6 @@
             width: 100%;
         }
 
-        /* --- BOTTONE CIRCOLARE AMAZON CON OVERLAY ESPANDIBILE --- */
-        .actions-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            position: relative;
-        }
-
-        .btn-amazon-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: var(--amazon-color);
-            color: #111;
-            width: 42px;
-            height: 42px;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 3px 8px rgba(255, 153, 0, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 0 10px;
-            cursor: pointer;
-            border: 1px solid #e68a00;
-            flex-shrink: 0;
-        }
-
-        .btn-amazon-circle .cart-icon {
-            font-size: 1.2rem;
-            min-width: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-amazon-circle .buy-text {
-            font-size: 0.85rem;
-            font-weight: bold;
-            opacity: 0;
-            max-width: 0;
-            transition: all 0.3s ease;
-            color: #111;
-        }
-
-        .btn-amazon-circle:hover, .btn-amazon-circle:focus {
-            width: auto;
-            max-width: 200px;
-            padding: 0 14px 0 10px;
-            background-color: var(--amazon-hover);
-            box-shadow: 0 5px 12px rgba(255, 153, 0, 0.6);
-        }
-
-        .btn-amazon-circle:hover .buy-text, .btn-amazon-circle:focus .buy-text {
-            opacity: 1;
-            max-width: 150px;
-            margin-left: 6px;
-        }
-
         /* Newsletter & GDPR */
         .newsletter-card {
             background: linear-gradient(135deg, #ffffff 0%, #f4fbfb 100%);
@@ -342,25 +281,473 @@
                 <h2>🎨 Free Coloring Pages & Books</h2>
                 <p>Download free black & white covers or grab your physical copy on Amazon!</p>
                 <div class="freebies-grid">
-    <div class="freebie-item">
-        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
-        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
-        <h3>Mystery in Hauntville</h3>
-        <div class="actions-wrapper">
-            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">
-                📥 Download PDF (A4)
-            </button>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>Mystery in Hauntville</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 Download PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="The Christmas Delivery LAST-MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>The Christmas Delivery LAST-MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 Download PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="SUN SEA and SURPRISES">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>SUN SEA and SURPRISES</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 Download PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOAL and NEW FRIENDS!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>GOAL and NEW FRIENDS!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 Download PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="The GREAT CHEESE-CHASE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>The GREAT CHEESE-CHASE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 Download PDF (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Unlock Bloopers & Secret Gallery!</h2>
+                <p>Subscribe to our official newsletter to unlock exclusive unreleased sketches, blooper pages, and fun extra goodies!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'en')">
+                    <input type="email" id="email-en" placeholder="Your email..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Unlock Secret Gallery 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-en">
+                    <label for="gdpr-en">I consent to receiving newsletter updates & bonus materials. See our <a href="privacy.html?lang=en" target="_blank">Privacy Policy</a>.</label>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="freebie-item">
-        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="The Christmas Delivery LAST-MINUTE">
-        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
-        <h3>The Christmas Delivery LAST-MINUTE</h3>
-        <div class="actions-wrapper">
-            <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">
-                📥 Download PDF (A4)
-            </button>
+
+        <!-- GERMAN CONTENT -->
+        <div id="content-de" class="lang-content">
+            <div class="card">
+                <h2>Sammelposter (Format A3)</h2>
+                <p>Lade das offizielle A3-Sammelposter herunter und drucke es aus! Jedes Mal, wenn du ein Buch aus der Reihe gelesen hast, schneide das Abzeichen aus und klebe es auf dein Poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('POSTER/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 A3-Poster Herunterladen
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Kostenlose Ausmalbilder & Bücher</h2>
+                <p>Lade kostenlose Ausmalbilder herunter oder hole dir dein Buch auf Amazon!</p>
+                <div class="freebies-grid">
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Die RATSEL von HAUNTVILLE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+                        <h3>Die RATSEL von HAUNTVILLE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 PDF Herunterladen (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="Die WEIHNACHTSLIEFERUNG LAST-MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+                        <h3>Die WEIHNACHTSLIEFERUNG LAST-MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 PDF Herunterladen (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="MEER STRAND und ÜBERRASCHUNGEN">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+                        <h3>MEER STRAND und ÜBERRASCHUNGEN</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 PDF Herunterladen (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="TOR und NEUE FREUNDE!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+                        <h3>TOR und NEUE FREUNDE!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 PDF Herunterladen (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="Die GROSSE KÄSEJAGD">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">DEMNÄCHST</span>
+                        <h3>Die GROSSE KÄSEJAGD</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 PDF Herunterladen (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Geheime Galerie & Bloopers Freischalten!</h2>
+                <p>Abonniere unseren Newsletter, um exklusive Skizzen und Extras freizuschalten!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'de')">
+                    <input type="email" id="email-de" placeholder="Deine E-Mail..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Geheime Galerie Freischalten 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-de">
+                    <label for="gdpr-de">Ich stimme dem Erhalt von Newslettern zu. Siehe <a href="privacy.html?lang=de" target="_blank">Datenschutzerklärung</a>.</label>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="freebie-item">
-        <img src="FREE_COVERS/1
+
+        <!-- ITALIAN CONTENT -->
+        <div id="content-it" class="lang-content">
+            <div class="card">
+                <h2>Il Poster della Collezione (A3)</h2>
+                <p>Scarica e stampa il Poster A3 ufficiale! Ogni volta che completi un libro della serie, ritaglia lo sticker-badge speciale dal libro e incollalo sul tuo poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('POSTER/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Scarica il Poster A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Disegni da Colorare & Libri della Serie</h2>
+                <p>Scarica gratis le copertine in bianco e nero o acquista la tua copia cartacea su Amazon!</p>
+                <div class="freebies-grid">
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mistero a Hauntville">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>Mistero a Hauntville</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 Scarica PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="CONSEGNA di NATALE LAST_MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>CONSEGNA di NATALE LAST_MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 Scarica PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="SOLE SPIAGGIA e SORPRESE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>SOLE SPIAGGIA e SORPRESE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 Scarica PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOALS e NUOVI AMICI!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>GOALS e NUOVI AMICI!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 Scarica PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La CORSA-RINCORSA del FORMAGGIO">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
+                        <h3>La CORSA-RINCORSA del FORMAGGIO</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 Scarica PDF (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Galleria Segreta & Bloopers Inediti!</h2>
+                <p>Iscriviti alla newsletter per sbloccare i bozzetti scartati, le scene inedite e i prossimi regalini di Hoopsy & Quacky!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'it')">
+                    <input type="email" id="email-it" placeholder="La tua email..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Sblocca Galleria Segreta 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-it">
+                    <label for="gdpr-it">Acconsento al trattamento dei dati personali per la newsletter. Consulta la <a href="privacy.html?lang=it" target="_blank">Privacy Policy</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRENCH CONTENT -->
+        <div id="content-fr" class="lang-content">
+            <div class="card">
+                <h2>Affiche de Collection (Format A3)</h2>
+                <p>Téléchargez et imprimez l'affiche A3 officielle ! Chaque fois que vous terminez un livre, découpez le badge et collez-le sur votre affiche.</p>
+                <button class="btn btn-primary" onclick="downloadFile('POSTER/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Télécharger l'Affiche A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Coloriages Gratuits & Livres</h2>
+                <p>Téléchargez des coloriages gratuits ou achetez votre livre sur Amazon !</p>
+                <div class="freebies-grid">
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystère à Hauntville">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+                        <h3>Mystère à Hauntville</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 Télécharger PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="La LIVRAISON DE NOËL LAST-MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+                        <h3>La LIVRAISON DE NOËL LAST-MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 Télécharger PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="MER PLAGE et SURPRISES">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+                        <h3>MER PLAGE et SURPRISES</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 Télécharger PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="BUT ET NOUVEAUX AMIS!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+                        <h3>BUT ET NOUVEAUX AMIS!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 Télécharger PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La FOLLE COURSE au FROMAGE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">BIENTÔT DISPONIBLE</span>
+                        <h3>La FOLLE COURSE au FROMAGE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 Télécharger PDF (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Galerie Secrète & Bloopers !</h2>
+                <p>Abonnez-vous à la newsletter pour débloquer des croquis inédits et des bonus gratuits !</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'fr')">
+                    <input type="email" id="email-fr" placeholder="Votre e-mail..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Débloquer la Galerie 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-fr">
+                    <label for="gdpr-fr">J'accepte de recevoir la newsletter. Voir la <a href="privacy.html?lang=fr" target="_blank">Politique de Confidentialité</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPANISH CONTENT -->
+        <div id="content-es" class="lang-content">
+            <div class="card">
+                <h2>Póster de Colección (Formato A3)</h2>
+                <p>¡Descarga e imprime el póster A3 oficial! Cada vez que termines un libro, recorta la insignia y pégala en tu póster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('POSTER/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Descargar Póster A3
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Páginas para Colorear & Libros</h2>
+                <p>¡Descarga cubiertas para colorear gratis o compra tu libro en Amazon!</p>
+                <div class="freebies-grid">
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Misterio en Hauntville">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+                        <h3>Misterio en Hauntville</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 Descargar PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="La ENTREGA DE NAVIDAD LAST-MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+                        <h3>La ENTREGA DE NAVIDAD LAST-MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 Descargar PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="El MISTERIO de HAUNTVILLE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+                        <h3>El MISTERIO de HAUNTVILLE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 Descargar PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="GOLES y NUEVOS AMIGOS!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+                        <h3>GOLES y NUEVOS AMIGOS!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 Descargar PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="La LOCA CARRERA del QUESO">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">PRÓXIMAMENTE</span>
+                        <h3>La LOCA CARRERA del QUESO</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 Descargar PDF (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 ¡Galería Secreta y Bloopers!</h2>
+                <p>¡Suscríbete al boletín para desbloquear bocetos inéditos y regalos especiales!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'es')">
+                    <input type="email" id="email-es" placeholder="Tu correo electrónico..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Desbloquear Galería 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-es">
+                    <label for="gdpr-es">Acepto recibir el boletín. Consulta la <a href="privacy.html?lang=es" target="_blank">Política de Privacidad</a>.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWEDISH CONTENT -->
+        <div id="content-sv" class="lang-content">
+            <div class="card">
+                <h2>Samlarposter (A3-format)</h2>
+                <p>Ladda ner och skriv ut den officiella A3-postern! Varje gång du läst ut en bok, klipp ut märket och klistra fast det på din poster.</p>
+                <button class="btn btn-primary" onclick="downloadFile('POSTER/hoopsyANDquacky_BadgePOSTER_A3.pdf', 'hoopsyANDquacky_BadgePOSTER_A3.pdf')">
+                    📥 Ladda ner A3-poster
+                </button>
+            </div>
+            
+            <div class="card">
+                <h2>🎨 Gratis Målarbilder & Böcker</h2>
+                <p>Ladda ner gratis målarbilder eller köp din bok på Amazon!</p>
+                <div class="freebies-grid">
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mysteriet i Hauntville">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+                        <h3>Mysteriet i Hauntville</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_HALLOWEEN_BW.pdf', '1adC_HALLOWEEN_BW.pdf')">📥 Ladda ner PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHRISTMAS_BW.png" alt="Den JULLEVERANSEN LAST-MINUTE">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+                        <h3>Den JULLEVERANSEN LAST-MINUTE</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHRISTMAS_BW.pdf', '1adC_CHRISTMAS_BW.pdf')">📥 Ladda ner PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_beach_BW.png" alt="HAV STRAND och OVERRASKNINGAR">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+                        <h3>HAV STRAND och OVERRASKNINGAR</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_beach_BW.pdf', '1adC_beach_BW.pdf')">📥 Ladda ner PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_FOOTBALL_BW.png" alt="MÅL OCH NYA VÄNNER!">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+                        <h3>MÅL OCH NYA VÄNNER!</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_FOOTBALL_BW.pdf', '1adC_FOOTBALL_BW.pdf')">📥 Ladda ner PDF (A4)</button>
+                    </div>
+                    <div class="freebie-item">
+                        <img src="FREE_COVERS/1adC_CHEESE_BW.png" alt="OSTLOPPET och JAKTEN">
+                        <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">KOMMER SNART</span>
+                        <h3>OSTLOPPET och JAKTEN</h3>
+                        <button class="btn btn-small" onclick="downloadFile('FREE_COVERS/1adC_CHEESE_BW.pdf', '1adC_CHEESE_BW.pdf')">📥 Ladda ner PDF (A4)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card newsletter-card">
+                <h2>📩 Hemligt Galleri & Bloopers!</h2>
+                <p>Prenumerera på vårt nyhetsbrev för att låsa upp exklusiva skisser och bonusmaterial!</p>
+                <form class="newsletter-form" onsubmit="handleCompanionSubmission(event, 'sv')">
+                    <input type="email" id="email-sv" placeholder="Din e-postadress..." required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary">Lås upp Galleriet 🎁</button>
+                </form>
+                <div class="gdpr-container">
+                    <input type="checkbox" required id="gdpr-sv">
+                    <label for="gdpr-sv">Jag godkänner att ta emot nyhetsbrev. Se <a href="privacy.html?lang=sv" target="_blank">Integritetspolicy</a>.</label>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © Hoopsy & Quacky Series — All rights reserved.
+    </footer>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+        
+        // Link corretto della cartella Google Drive per i bloopers
+        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=drive_link"; 
+
+        function downloadFile(fileUrl, fileName) {
+            console.log("Download avviato per: " + fileName);
+            if (typeof gtag === 'function') {
+                gtag('event', 'download_pdf', {
+                    'event_category': 'Freebies',
+                    'event_label': fileName,
+                    'value': 1
+                });
+            }
+
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    window.location.href = fileUrl;
+                });
+        }
+
+        function handleCompanionSubmission(event, lang) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-' + lang);
+            if (!emailInput || !emailInput.value) return;
+            
+            const form = emailInput.closest('form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const userEmail = emailInput.value.trim();
+
+            const successData = {
+                'it': { text: '🎉 Iscrizione completata! Ecco i tuoi bonus:', linkText: '📥 Apri Galleria & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'en': { text: '🎉 Subscribed successfully! Here are your bonuses:', linkText: '📥 Open Gallery & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'de': { text: '🎉 Anmeldung erfolgreich! Hier sind deine Boni:', linkText: '📥 Galerie & Bloopers öffnen (Drive)', url: DRIVE_FOLDER_URL },
+                'fr': { text: '🎉 Inscription réussie ! Voici vos bonus :', linkText: '📥 Ouvrir la Galerie & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'es': { text: '¡Suscripción exitosa! Aquí tienes tus bonus:', linkText: '📥 Abrir Galería y Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'sv': { text: '🎉 Prenumerationen lyckades! Här är dina bonusar:', linkText: '📥 Öppna Galleri & Bloopers (Drive)', url: DRIVE_FOLDER_URL }
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = '⏳ ...';
+
+            // Invio JSON pulito compatibile con il backend Apps Script originale
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userEmail,
+                    lang: lang
+                })
+            })
+            .then(() => {
+                const data = successData[lang] || successData['en'];
+                form.innerHTML = `
+                    <div style="margin-top: 10px;">
+                        <p style="color: #2c3e50; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px;">${data.text}</p>
+                        <a href="${data.url}" class="btn btn-primary btn-small" target="_blank" style="display:inline-block; text-decoration:none;">
+                            ${data.linkText}
+                        </a>
+                    </div>`;
+            })
+            .catch(error => {
+                console.error('Errore durante l\'iscrizione:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Sblocca Bonus 🎁';
+                alert('Si è verificato un errore di connessione. Riprova tra poco!');
+            });
+        }
+
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['en', 'de', 'it', 'fr', 'es', 'sv'];
+            setLang(supportedLangs.includes(langCode) ? langCode : 'en');
+        }
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+
+            const targetContent = document.getElementById('content-' + lang) || document.getElementById('content-en');
+            targetContent.classList.add('active');
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase() === lang.toLowerCase()) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        window.onload = detectLanguage;
+    </script>
+</body>
+</html>
