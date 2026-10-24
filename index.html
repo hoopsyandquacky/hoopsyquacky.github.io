@@ -342,7 +342,6 @@
                 <h2>🎨 Free Coloring Pages & Books</h2>
                 <p>Download free black & white covers or grab your physical copy on Amazon!</p>
                 <div class="freebies-grid">
-<!-- LO SCRIPT PYTHON INSOLITAMENTE INSERIRÀ I LIBRI QUI (EN) -->
     <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
@@ -829,8 +828,8 @@
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
         
-        // Inserisci qui il link della tua cartella Google Drive (es. "https://drive.google.com/drive/folders/TUO_LINK_QUI")
-        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=sharing"; 
+        // Inserisci qui il link della tua cartella Google Drive con i bloopers
+        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=drive_link"; 
 
         function downloadFile(fileUrl, fileName) {
             console.log("Download avviato per: " + fileName);
@@ -884,20 +883,18 @@
             submitBtn.disabled = true;
             submitBtn.innerText = '⏳ ...';
 
-            // Invio dei dati in background con un'immagine beacon o fetch sicura no-cors
+            // Invio dei dati tramite URLSearchParams (garantisce il salvataggio immediato sul foglio con no-cors)
+            const formData = new URLSearchParams();
+            formData.append('email', userEmail);
+            formData.append('lang', lang);
+
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8',
-                },
-                body: JSON.stringify({
-                    email: userEmail,
-                    lang: lang
-                })
+                body: formData
             }).catch(err => console.log('Background sync:', err));
 
-            // Mostriamo immediatamente il messaggio e il link Drive senza blocchi
+            // Mostra subito il messaggio e sblocca il pulsante Drive
             setTimeout(() => {
                 const data = successData[lang] || successData['en'];
                 form.innerHTML = `
@@ -907,7 +904,7 @@
                             ${data.linkText}
                         </a>
                     </div>`;
-            }, 400);
+            }, 300);
         }
 
         function detectLanguage() {
