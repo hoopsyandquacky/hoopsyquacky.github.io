@@ -342,6 +342,7 @@
                 <h2>🎨 Free Coloring Pages & Books</h2>
                 <p>Download free black & white covers or grab your physical copy on Amazon!</p>
                 <div class="freebies-grid">
+<!-- LO SCRIPT PYTHON INSOLITAMENTE INSERIRÀ I LIBRI QUI (EN) -->
     <div class="freebie-item">
         <img src="FREE_COVERS/1adC_HALLOWEEN_BW.png" alt="Mystery in Hauntville">
         <span style="background-color: #ff6b6b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 8px;">COMING SOON</span>
@@ -826,7 +827,10 @@
     </footer>
 
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnZE7GMJgWTseBMozSedT3zh8xmuf46USEHRTqvuhZLPJQs-7xO6Y0XhegPPjbxQyp/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+        
+        // Inserisci qui il link della tua cartella Google Drive (es. "https://drive.google.com/drive/folders/TUO_LINK_QUI")
+        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=sharing"; 
 
         function downloadFile(fileUrl, fileName) {
             console.log("Download avviato per: " + fileName);
@@ -868,13 +872,13 @@
             const submitBtn = form.querySelector('button[type="submit"]');
             const userEmail = emailInput.value.trim();
             
-            const thankYouMessages = {
-                'it': '🎉 Grazie per l\'iscrizione! I bonus sono ora sbloccati per te.',
-                'en': '🎉 Thank you for subscribing! Your bonus content is unlocked.',
-                'de': '🎉 Vielen Dank für deine Anmeldung! Deine Bonusinhalte sind freigeschaltet.',
-                'fr': '🎉 Merci pour votre inscription ! Vos contenus bonus sont débloqués.',
-                'es': '🎉 ¡Gracias por suscribirte! Tus contenidos bonus están desbloqueados.',
-                'sv': '🎉 Tack för din prenumeration! Ditt bonusinnehåll är upplåst.'
+            const successData = {
+                'it': { text: '🎉 Iscrizione completata! Ecco i tuoi bonus:', linkText: '📥 Apri Galleria & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'en': { text: '🎉 Subscribed successfully! Here are your bonuses:', linkText: '📥 Open Gallery & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'de': { text: '🎉 Anmeldung erfolgreich! Hier sind deine Boni:', linkText: '📥 Galerie & Bloopers öffnen (Drive)', url: DRIVE_FOLDER_URL },
+                'fr': { text: '🎉 Inscription réussie ! Voici vos bonus :', linkText: '📥 Ouvrir la Galerie & Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'es': { text: '🎉 ¡Suscripción exitosa! Aquí tienes tus bonus:', linkText: '📥 Abrir Galería y Bloopers (Drive)', url: DRIVE_FOLDER_URL },
+                'sv': { text: '🎉 Prenumerationen lyckades! Här är dina bonusar:', linkText: '📥 Öppna Galleri & Bloopers (Drive)', url: DRIVE_FOLDER_URL }
             };
 
             submitBtn.disabled = true;
@@ -892,8 +896,14 @@
                 })
             })
             .then(() => {
-                const message = thankYouMessages[lang] || thankYouMessages['en'];
-                form.innerHTML = `<p style="color: #4ECDC4; font-weight: bold; font-size: 1rem; margin-top: 10px; line-height: 1.4;">${message}</p>`;
+                const data = successData[lang] || successData['en'];
+                form.innerHTML = `
+                    <div style="margin-top: 10px;">
+                        <p style="color: #2c3e50; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px;">${data.text}</p>
+                        <a href="${data.url}" class="btn btn-primary btn-small" target="_blank" style="display:inline-block; text-decoration:none;">
+                            ${data.linkText}
+                        </a>
+                    </div>`;
             })
             .catch(error => {
                 console.error('Errore durante l\'iscrizione:', error);
