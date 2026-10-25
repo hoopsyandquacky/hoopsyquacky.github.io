@@ -247,6 +247,14 @@
         .lang-content.active {
             display: block;
         }
+        /* Campo anti-bot (honeypot): invisibile agli utenti */
+        .hp-field {
+            position: absolute !important;
+            left: -9999px !important;
+            width: 1px; height: 1px;
+            overflow: hidden;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -707,17 +715,7 @@
             submitBtn.disabled = true;
             submitBtn.innerText = '⏳ ...';
 
-            // Invio dati a Apps Script
-            // Content-Type text/plain evita il preflight CORS (Apps Script non gestisce OPTIONS).
-            // Lo script legge comunque il JSON da e.postData.contents.
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({ email: userEmail, lang: lang })
-            })
-            .then(r => r.json())
-            .then(res => {
-                if (res.result !== 'success') throw new Error(res.message || 'Errore');
+            const showSuccess = () => {
                 const data = successData[lang] || successData['en'];
                 form.innerHTML = `
                     <div style="margin-top: 10px;">
@@ -726,12 +724,54 @@
                             ${data.linkText}
                         </a>
                     </div>`;
+            };
+
+            // Honeypot: se il campo nascosto e' compilato e' un bot -> finto successo, nessun invio
+            const hpField = form.querySelector('input[name="website"]');
+            const hpValue = hpField ? hpField.value : '';
+            if (hpValue) {
+                showSuccess();
+                return;
+            }
+
+            // Invio dati a Apps Script
+            // Content-Type text/plain evita il preflight CORS (Apps Script non gestisce OPTIONS).
+            // Lo script legge comunque il JSON da e.postData.contents.
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({
+                    email: userEmail,
+                    lang: lang,
+                    consent: !!(gdprCheck && gdprCheck.checked),
+                    website: hpValue
+                })
+            })
+            .then(r => r.json())
+            .then(res => {
+                if (res.result !== 'success') throw new Error(res.message || 'Errore');
+                showSuccess();
             })
             .catch(err => {
                 console.error('Errore durante l\'invio:', err);
                 submitBtn.disabled = false;
                 submitBtn.innerText = originalBtnText;
                 alert(lang === 'it' ? 'Errore durante l\'iscrizione, riprova.' : 'Subscription error, please try again.');
+            });
+        }
+
+        // Aggiunge a ogni modulo newsletter il campo anti-bot nascosto
+        function addHoneypots() {
+            document.querySelectorAll('.newsletter-form').forEach(f => {
+                if (f.querySelector('input[name="website"]')) return;
+                const hp = document.createElement('input');
+                hp.type = 'text';
+                hp.name = 'website';
+                hp.className = 'hp-field';
+                hp.tabIndex = -1;
+                hp.autocomplete = 'off';
+                hp.setAttribute('aria-hidden', 'true');
+                f.appendChild(hp);
             });
         }
 
@@ -756,7 +796,7 @@
             });
         }
 
-        window.onload = detectLanguage;
+        window.onload = function () { addHoneypots(); detectLanguage(); };
     </script>
 </body>
 </html>
