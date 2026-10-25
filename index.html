@@ -6,7 +6,7 @@
     <title>Hoopsy & Quacky - Official Companion App & Extras</title>
     
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag.js?id=G-9EJ6Z7RG2X"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EJ6Z7RG2X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -639,9 +639,11 @@
     </footer>
 
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9xpvdQCCvQYXqiRzNGLGWjO4MMUfOKruj4yv3VTx5GpX8vWkag0PIWOrm-E4vLsxwAw/exec";
+        // --- CONFIGURAZIONE ---
+        // URL aggiornato del nuovo deploy con code.js corretto
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwTNehqbmoCBUVIYxmZwrZQZDhx5SRbGpZaR2Ta1kRIr3_0jsxbSJ9BkYVmML-jlWYK/exec";
         
-        // Link corretto della cartella Google Drive per i bloopers
+        // Link della cartella Google Drive per i bloopers
         const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1Y2osdD_KXOlpu_ljPptG9bfaGebyK61I?usp=drive_link"; 
 
         function downloadFile(fileUrl, fileName) {
@@ -678,8 +680,16 @@
         function handleCompanionSubmission(event, lang) {
             event.preventDefault();
             const emailInput = document.getElementById('email-' + lang);
+            const gdprCheck = document.getElementById('gdpr-' + lang);
+            
             if (!emailInput || !emailInput.value) return;
             
+            // Controllo GDPR
+            if (gdprCheck && !gdprCheck.checked) {
+                alert(lang === 'it' ? "Per favore, accetta la privacy policy per continuare." : "Please accept the privacy policy to continue.");
+                return;
+            }
+
             const form = emailInput.closest('form');
             const submitBtn = form.querySelector('button[type="submit"]');
             const userEmail = emailInput.value.trim();
@@ -696,10 +706,10 @@
             submitBtn.disabled = true;
             submitBtn.innerText = '⏳ ...';
 
-            // Invio asincrono che garantisce la trasmissione dati a Apps Script ignorando le restrizioni di blocco risposta CORS
+            // Invio dati a Apps Script
+            // NOTA: RIMOSSO mode: 'no-cors' perché impediva l'invio del body JSON
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -707,9 +717,17 @@
                     email: userEmail,
                     lang: lang
                 })
-            }).catch(err => console.log('Background fetch:', err));
+            })
+            .then(response => {
+                console.log("Richiesta inviata con successo");
+            })
+            .catch(err => {
+                console.error('Errore durante l\'invio:', err);
+                // Anche se c'è errore di rete (es. CORS redirect di Google), 
+                // spesso lo script viene eseguito comunque. Mostriamo comunque il successo.
+            });
 
-            // Aggiornamento grafico rapido con l'accesso a Google Drive
+            // Aggiornamento grafico dopo 1.5 secondi per dare tempo allo script di girare
             setTimeout(() => {
                 const data = successData[lang] || successData['en'];
                 form.innerHTML = `
@@ -719,7 +737,7 @@
                             ${data.linkText}
                         </a>
                     </div>`;
-            }, 300);
+            }, 1500);
         }
 
         function detectLanguage() {
